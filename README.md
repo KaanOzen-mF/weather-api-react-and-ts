@@ -35,6 +35,8 @@ export default {
 
 Developing a Minimum Viable Product (MVP) for a weather app website involves identifying the core features that meet the primary needs of your target users, ensuring the app delivers value while remaining lean and manageable for initial launch. Here's a structured approach to defining the MVP features:
 
+# MVP File For Weather App
+
 ### 1. User Identification and Market Research
 
 - **Define Target Audience:** Understand who your users are (e.g., general public, outdoor enthusiasts, farmers, maritime users).
