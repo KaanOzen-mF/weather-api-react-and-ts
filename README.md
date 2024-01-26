@@ -35,6 +35,10 @@ export default {
 
 Developing a Minimum Viable Product (MVP) for a weather app website involves identifying the core features that meet the primary needs of your target users, ensuring the app delivers value while remaining lean and manageable for initial launch. Here's a structured approach to defining the MVP features:
 
+# Figma Design File
+
+### https://www.figma.com/file/6Sdqd3zYXGZacTMEOnMYNR/Untitled?type=design&node-id=0%3A1&mode=design&t=X07vtJh19sXustPo-1
+
 # MVP File For Weather App
 
 ### 1. User Identification and Market Research
