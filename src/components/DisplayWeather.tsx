@@ -1,14 +1,14 @@
-import LanguageChangeButton from "./LanguageChangeBtn";
-import SearchBar from "./SearchBar";
-import { MainWrapper } from "./styles.module";
-import TemperatureSwitch from "./TemperatureSwitch";
+import { WeatherWrapper } from "./styles.module";
+import Weather from "./Weather";
+import WeatherDate from "./WeatherDate";
+import WeatherInfoCard from "./WeatherInfoCard";
 
-export const DisplayWeeather = () => {
+export const DisplayWeather = () => {
   return (
-    <MainWrapper>
-      <SearchBar />
-      <LanguageChangeButton />
-      <TemperatureSwitch />
-    </MainWrapper>
+    <WeatherWrapper>
+      <WeatherDate />
+      <Weather />
+      <WeatherInfoCard />
+    </WeatherWrapper>
   );
 };
