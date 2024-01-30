@@ -1,10 +1,12 @@
 import "./App.css";
-import { DisplayWeeather } from "./components/DisplayWeather";
+import { DisplayWeather } from "./components/DisplayWeather";
+import { WeatherNavBar } from "./components/WeatherNavBar";
 
 function App() {
   return (
     <>
-      <DisplayWeeather />
+      <WeatherNavBar />
+      <DisplayWeather />
     </>
   );
 }
