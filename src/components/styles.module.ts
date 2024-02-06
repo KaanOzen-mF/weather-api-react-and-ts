@@ -41,3 +41,14 @@ export const CityWeatherWrapper = styled.div`
 
   margin-top: 5%;
 `;
+
+export const ForecastWeatherWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  border-radius: 12px;
+  border: 1px solid rgba(98, 96, 96, 0.1);
+  background: rgba(98, 96, 96, 0.47);
+  backdrop-filter: blur(6.900000095367432px);
+  margin-left: 5%;
+`;
