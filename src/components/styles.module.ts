@@ -34,3 +34,10 @@ export const LanguageChangeButtonWrapper = styled.div`
   background-color: #b8b7b7;
   border-radius: 24px;
 `;
+
+export const CityWeatherWrapper = styled.div`
+  width: 50%;
+  margin-left: 5%;
+
+  margin-top: 5%;
+`;
