@@ -18,56 +18,66 @@ type CityWeather = {
   };
 };
 
-interface CityCardProps {
-  cityWeather: CityWeather;
-}
+type ModalProps = {
+  show: boolean;
+  onClose: () => void;
+  children: React.ReactNode;
+};
 
-const CityCard: React.FC<CityCardProps> = ({ cityWeather }) => (
+const Modal: React.FC<ModalProps> = ({ show, onClose, children }) => {
+  if (!show) {
+    return null;
+  }
+
+  return (
+    <div className="modal-backdrop">
+      <div className="modal-content">
+        {children}
+        <button onClick={onClose}>Close</button>
+      </div>
+    </div>
+  );
+};
+const CityCard: React.FC<{ cityWeather: CityWeather }> = ({ cityWeather }) => (
   <div className="city-card">
     <h2>{cityWeather.name}</h2>
     <p>
       {cityWeather.forecast.forecastday[0].day.maxtemp_c}°C /{" "}
       {cityWeather.forecast.forecastday[0].day.mintemp_c}°C
     </p>
-    <img src={cityWeather.forecast.forecastday[0].day.condition.icon} alt="" />
-    {/* Additional weather info can be added here */}
+    <img
+      src={cityWeather.forecast.forecastday[0].day.condition.icon}
+      alt="Weather Icon"
+    />
   </div>
 );
 
-const AddCityInput: React.FC<{
-  onAddCity: (cityName: string) => Promise<void>;
-}> = ({ onAddCity }) => {
-  const [inputValue, setInputValue] = useState("");
-
-  const handleAddClick = async () => {
-    if (inputValue.trim()) {
-      await onAddCity(inputValue);
-      setInputValue("");
-    }
-  };
-
+const AddCityCard: React.FC<{ onAddClick: () => void }> = ({ onAddClick }) => {
   return (
-    <div>
-      <input
-        type="text"
-        value={inputValue}
-        onChange={(e) => setInputValue(e.target.value)}
-        placeholder="Type city name and press enter"
-      />
-      <button onClick={handleAddClick}>Add</button>
+    <div className="add-city-card" onClick={onAddClick}>
+      <div className="add-city-content">
+        <span className="plus-icon">+</span>
+        <span>Add City</span>
+      </div>
     </div>
   );
 };
 
 const WeatherForecast: React.FC = () => {
-  const [cities, setCities] = useState<CityWeather[]>([]);
-  const [addingCity, setAddingCity] = useState(false);
+  const [cities, setCities] = useState<CityWeather[]>(() => {
+    const savedCities = localStorage.getItem("cities");
+    return savedCities ? JSON.parse(savedCities) : [];
+  });
+  const [newCityName, setNewCityName] = useState("");
+  const [isAdding, setIsAdding] = useState(false);
+
+  const closeAddCityModal = () => setIsAdding(false);
 
   const fetchCurrentWeather = async (query: string) => {
     const options = {
       method: "GET",
       url: "https://weatherapi-com.p.rapidapi.com/forecast.json",
-      params: { q: query }, // Fixed here
+      params: { q: query },
       headers: {
         "X-RapidAPI-Key": "b12886698dmsh2a39c211cc8b4aep12a465jsn115794388fb5",
         "X-RapidAPI-Host": "weatherapi-com.p.rapidapi.com",
@@ -76,7 +86,7 @@ const WeatherForecast: React.FC = () => {
 
     try {
       const response = await axios.request(options);
-      return response.data; // Make sure to handle and parse this data correctly
+      return response.data;
     } catch (error) {
       console.error(error);
     }
@@ -85,20 +95,38 @@ const WeatherForecast: React.FC = () => {
   const addCity = async (cityName: string) => {
     const weatherData = await fetchCurrentWeather(cityName);
     if (weatherData) {
-      const newCityWeather: CityWeather = {
-        name: weatherData.location.name,
-        forecast: weatherData.forecast, // Adjusted to match the type
-      };
-      setCities([...cities, newCityWeather]);
+      const updatedCities = [
+        ...cities,
+        {
+          name: weatherData.location.name,
+          forecast: weatherData.forecast,
+        },
+      ];
+      setCities(updatedCities);
+      localStorage.setItem("cities", JSON.stringify(updatedCities)); // Save to local storage
+      setNewCityName(""); // Clear the input after adding a city
+      setIsAdding(false); // Close the modal
     }
-    setAddingCity(false);
   };
 
   return (
     <div className="weather-forecast">
-      <button onClick={() => setAddingCity(!addingCity)}>+ Add City</button>
-      {addingCity && <AddCityInput onAddCity={addCity} />}
+      <Modal show={isAdding} onClose={closeAddCityModal}>
+        <div className="add-city-modal">
+          <input
+            type="text"
+            value={newCityName}
+            onChange={(e) => setNewCityName(e.target.value)}
+            placeholder="Enter city name"
+            onKeyDown={(e) => e.key === "Enter" && addCity(newCityName)}
+          />
+          <button onClick={() => addCity(newCityName)}>Add</button>
+        </div>
+      </Modal>
+
       <div className="city-list">
+        <AddCityCard onAddClick={() => setIsAdding(true)} />
+
         {cities.map((cityWeather, index) => (
           <CityCard key={index} cityWeather={cityWeather} />
         ))}
