@@ -115,6 +115,7 @@ body {
   font-weight: 500;
   margin-bottom: 12px;
   color: white;
+  margin-top: 24px;
 }
 .weatherInfoContainer {
   display: flex;
@@ -194,4 +195,92 @@ body {
 .weatherHourlyCardContainer {
   scrollbar-width: thin; /* "auto", "thin", or "none" */
   scrollbar-color: #888 #f1f1f1; /* thumb and track color */
+}
+
+.cityCard {
+  background: rgba(98, 96, 96, 0.47);
+  backdrop-filter: blur(6.900000095367432px);
+}
+
+.add-city-card {
+  border: dashed 2px #fff;
+  border-radius: 24px;
+  padding: 5%;
+  width: 196px;
+  text-align: center;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(98, 96, 96, 0.47);
+  backdrop-filter: blur(6.900000095367432px);
+  color: white;
+  font-size: 24px;
+  margin-right: 12px;
+}
+
+.plus-icon {
+  font-size: 24px;
+  color: yellow;
+  margin-right: 10px;
+}
+
+.add-city-text {
+  color: white;
+  font-weight: bold;
+}
+
+.weather-forecast {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  overflow-x: scroll;
+}
+
+.city-list {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: white;
+  padding: 20px;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  background: rgba(98, 96, 96, 0.47);
+  backdrop-filter: blur(6.900000095367432px);
+}
+
+.add-city-modal {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.city-card {
+  background: rgba(98, 96, 96, 0.47);
+  backdrop-filter: blur(6.900000095367432px);
+  padding: 5%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 172px;
+  border-radius: 24px;
+  color: white;
+  margin-right: 12px;
 }
