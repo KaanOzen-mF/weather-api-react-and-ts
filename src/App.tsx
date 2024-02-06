@@ -1,6 +1,7 @@
 import "./App.css";
 import DisplayCityWeather from "./components/DisplayCityWeather";
 import { DisplayWeather } from "./components/DisplayWeather";
+import DisplayForecastWeather from "./components/DisplayForecastWeather";
 import { WeatherNavBar } from "./components/WeatherNavBar";
 
 function App() {
@@ -9,6 +10,7 @@ function App() {
       <WeatherNavBar />
       <DisplayWeather />
       <DisplayCityWeather />
+      <DisplayForecastWeather />
     </>
   );
 }
