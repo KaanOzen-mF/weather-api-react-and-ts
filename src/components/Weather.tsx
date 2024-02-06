@@ -1,5 +1,4 @@
 import axios from "axios";
-import { FaCloud } from "react-icons/fa";
 import { useEffect, useState } from "react";
 
 interface WeatherDataProps {
