@@ -61,7 +61,6 @@ export default function Weather() {
     });
   }, []);
 
-  console.log(weatherData);
   return (
     <div className="weatherInfoContainer">
       {weatherData && (
