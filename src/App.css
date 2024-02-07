@@ -284,3 +284,55 @@ body {
   color: white;
   margin-right: 12px;
 }
+
+.forecastContainer {
+  margin-left: 6%;
+  margin-right: 6%;
+}
+
+.forecastTitleContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 24px;
+  font-weight: 500;
+  margin-bottom: 12px;
+  color: white;
+  margin-top: 24px;
+}
+
+.forecastTitleDays {
+  background: rgba(140, 210, 206, 0.47);
+  border-radius: 30px;
+  padding: 6px;
+  font-size: 16px;
+  font-weight: 300;
+}
+
+.forecastWeatherContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #fff;
+  border-radius: 12px;
+  background: #626060;
+  margin-bottom: 12px;
+  padding: 3px 6px;
+}
+
+.forecastWeatherMaxTemp {
+  font-size: 16px;
+  font-weight: 500;
+  margin-right: 3px;
+  margin-left: 8px;
+}
+
+.forecastWeatherMinTemp {
+  font-size: 12px;
+  font-weight: 300;
+}
+
+.forecastWeatherTempContainer {
+  display: flex;
+  align-items: center;
+}
