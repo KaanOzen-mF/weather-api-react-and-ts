@@ -2,27 +2,17 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 
 interface WeatherDataProps {
-  location: {
-    name: string;
-    country: string;
-  };
-  current: {
-    temp_c: number;
-    humidity: number;
-    gust_kph: number;
-    condition: {
-      icon: string;
-    };
-  };
   forecast: {
     forecastday: [
       {
-        hour: [
-          {
-            temp_c: number;
-            time: string;
-          }
-        ];
+        date: string;
+        day: {
+          maxtemp_c: number;
+          mintemp_c: number;
+          condition: {
+            icon: string;
+          };
+        };
       }
     ];
   };
@@ -63,12 +53,34 @@ export default function ForecastWeather() {
         setWeatherData(currentWeather);
       });
     });
-  }, []); // Add 'days' as a dependency here
+  }, []);
 
-  console.log(weatherData);
+  weatherData?.forecast.forecastday.map((i) => console.log(i));
+  const formatDate = (dateString: string): string => {
+    const options: Intl.DateTimeFormatOptions = {
+      day: "2-digit",
+      month: "short",
+      weekday: "short",
+    };
+    return new Date(dateString).toLocaleDateString("en-US", options);
+  };
+
   return (
-    <div>
-      <p>Forecast Weather</p>
+    <div className="forecastContainer">
+      <div className="forecastTitleContainer">
+        <p>Forecast</p>
+        <p className="forecastTitleDays">3 Days</p>
+      </div>
+      {weatherData?.forecast.forecastday.map((i) => (
+        <div className="forecastWeatherContainer">
+          <div className="forecastWeatherTempContainer">
+            <img src={i.day.condition.icon} alt="" />
+            <p className="forecastWeatherMaxTemp">{i.day.maxtemp_c}</p>
+            <p className="forecastWeatherMinTemp">/{i.day.mintemp_c}</p>
+          </div>
+          <p>{formatDate(i.date)}</p>
+        </div>
+      ))}
     </div>
   );
 }
