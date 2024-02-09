@@ -1,5 +1,5 @@
-import axios from "axios";
 import { useEffect, useState } from "react";
+import { fetchCurrentWeather } from "../utils/fetchWeather";
 
 interface WeatherDataProps {
   location: {
@@ -30,25 +30,6 @@ interface WeatherDataProps {
 
 export default function Weather() {
   const [weatherData, setWeatherData] = useState<WeatherDataProps | null>(null);
-
-  const fetchCurrentWeather = async (query: string) => {
-    const options = {
-      method: "GET",
-      url: "https://weatherapi-com.p.rapidapi.com/forecast.json",
-      params: { query },
-      headers: {
-        "X-RapidAPI-Key": "b12886698dmsh2a39c211cc8b4aep12a465jsn115794388fb5",
-        "X-RapidAPI-Host": "weatherapi-com.p.rapidapi.com",
-      },
-    };
-
-    try {
-      const response = await axios.request(options);
-      return response.data;
-    } catch (error) {
-      console.error(error);
-    }
-  };
 
   useEffect(() => {
     navigator.geolocation.getCurrentPosition((position) => {
