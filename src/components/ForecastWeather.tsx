@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import axios from "axios";
+import { fetchForecastWeather } from "../utils/fetchWeather";
 
 interface WeatherDataProps {
   forecast: {
@@ -21,41 +21,15 @@ interface WeatherDataProps {
 export default function ForecastWeather() {
   const [weatherData, setWeatherData] = useState<WeatherDataProps | null>(null);
 
-  const fetchCurrentWeather = async (
-    latitude: number,
-    longitude: number,
-    days: number = 3
-  ) => {
-    const options = {
-      method: "GET",
-      url: "https://weatherapi-com.p.rapidapi.com/forecast.json",
-      params: {
-        q: `${latitude},${longitude}`,
-        days: days,
-      },
-      headers: {
-        "X-RapidAPI-Key": "b12886698dmsh2a39c211cc8b4aep12a465jsn115794388fb5",
-        "X-RapidAPI-Host": "weatherapi-com.p.rapidapi.com",
-      },
-    };
-    try {
-      const response = await axios.request(options);
-      return response.data;
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
   useEffect(() => {
     navigator.geolocation.getCurrentPosition((position) => {
       const { latitude, longitude } = position.coords;
-      fetchCurrentWeather(latitude, longitude).then((currentWeather) => {
+      fetchForecastWeather(latitude, longitude).then((currentWeather) => {
         setWeatherData(currentWeather);
       });
     });
   }, []);
 
-  weatherData?.forecast.forecastday.map((i) => console.log(i));
   const formatDate = (dateString: string): string => {
     const options: Intl.DateTimeFormatOptions = {
       day: "2-digit",
@@ -71,8 +45,8 @@ export default function ForecastWeather() {
         <p>Forecast</p>
         <p className="forecastTitleDays">3 Days</p>
       </div>
-      {weatherData?.forecast.forecastday.map((i) => (
-        <div className="forecastWeatherContainer">
+      {weatherData?.forecast.forecastday.map((i, k) => (
+        <div className="forecastWeatherContainer" key={k}>
           <div className="forecastWeatherTempContainer">
             <img src={i.day.condition.icon} alt="" />
             <p className="forecastWeatherMaxTemp">{i.day.maxtemp_c}</p>
