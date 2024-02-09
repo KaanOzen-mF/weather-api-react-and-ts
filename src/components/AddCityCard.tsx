@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import axios from "axios";
+import { fetchCurrentWeather } from "../utils/fetchWeather";
 
 type CityWeather = {
   name: string;
@@ -72,25 +72,6 @@ const WeatherForecast: React.FC = () => {
   const [isAdding, setIsAdding] = useState(false);
 
   const closeAddCityModal = () => setIsAdding(false);
-
-  const fetchCurrentWeather = async (query: string) => {
-    const options = {
-      method: "GET",
-      url: "https://weatherapi-com.p.rapidapi.com/forecast.json",
-      params: { q: query },
-      headers: {
-        "X-RapidAPI-Key": "b12886698dmsh2a39c211cc8b4aep12a465jsn115794388fb5",
-        "X-RapidAPI-Host": "weatherapi-com.p.rapidapi.com",
-      },
-    };
-
-    try {
-      const response = await axios.request(options);
-      return response.data;
-    } catch (error) {
-      console.error(error);
-    }
-  };
 
   const addCity = async (cityName: string) => {
     const weatherData = await fetchCurrentWeather(cityName);
