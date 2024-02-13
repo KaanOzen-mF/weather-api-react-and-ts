@@ -9,10 +9,16 @@ function App() {
   return (
     <>
       <WeatherNavBar />
-      <DisplayWeather />
-      <DisplayCityWeather />
-      <DisplayForecastWeather />
-      <WeatherGraphs />
+      <div className="weatherMainPageContainer">
+        <div className="weatherMainPageLeftContainer">
+          <DisplayWeather />
+          <WeatherGraphs />
+        </div>
+        <div className="weatherMainPageRightContainer">
+          <DisplayForecastWeather />
+          <DisplayCityWeather />
+        </div>
+      </div>
     </>
   );
 }
