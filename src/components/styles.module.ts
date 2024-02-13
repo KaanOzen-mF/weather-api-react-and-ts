@@ -3,7 +3,6 @@ import styled from "styled-components";
 export const WeatherWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  width: 50%;
   border-radius: 12px;
   border: 1px solid rgba(98, 96, 96, 0.1);
   background: rgba(98, 96, 96, 0.47);
@@ -36,30 +35,28 @@ export const LanguageChangeButtonWrapper = styled.div`
 `;
 
 export const CityWeatherWrapper = styled.div`
-  width: 50%;
+  margin-right: 5%;
   margin-left: 5%;
-
-  margin-top: 5%;
 `;
 
 export const ForecastWeatherWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  width: 25%;
   border-radius: 12px;
   border: 1px solid rgba(98, 96, 96, 0.1);
   background: rgba(98, 96, 96, 0.47);
   backdrop-filter: blur(6.900000095367432px);
   margin-left: 5%;
+  margin-right: 5%;
 `;
 
 export const WeatherGraphsWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  width: 50%;
   border-radius: 12px;
   border: 1px solid rgba(98, 96, 96, 0.1);
   background: rgba(98, 96, 96, 0.47);
   backdrop-filter: blur(6.900000095367432px);
   margin-left: 5%;
+  margin-top: 32px;
 `;
