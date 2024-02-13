@@ -217,6 +217,7 @@ body {
   color: white;
   font-size: 24px;
   margin-right: 12px;
+  height: 72px;
 }
 
 .plus-icon {
@@ -225,6 +226,12 @@ body {
   margin-right: 10px;
 }
 
+.add-city-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 .add-city-text {
   color: white;
   font-weight: bold;
@@ -235,6 +242,7 @@ body {
   flex-direction: row;
   align-items: center;
   overflow-x: scroll;
+  height: 300px;
 }
 
 .city-list {
@@ -279,10 +287,12 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 172px;
   border-radius: 24px;
   color: white;
   margin-right: 12px;
+  height: 64px;
+  align-self: flex-start;
+  width: 100%;
 }
 
 .forecastContainer {
@@ -302,7 +312,7 @@ body {
 }
 
 .forecastTitleDays {
-  background: rgba(140, 210, 206, 0.47);
+  background-color: #8cd2ce; /* Active background color for buttons */
   border-radius: 30px;
   padding: 6px;
   font-size: 16px;
@@ -335,4 +345,62 @@ body {
 .forecastWeatherTempContainer {
   display: flex;
   align-items: center;
+}
+
+.weatherMainPageContainer {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  margin-top: 12px;
+}
+
+.weatherMainPageLeftContainer {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+}
+
+.weatherMainPageRightContainer {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+}
+
+.weatherGraphsTitleBtnContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.weatherGrapsTitleContainer {
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 500;
+  padding: 5%;
+  color: white;
+}
+.weatherGrapsButtonContainer {
+  background-color: #626060; /* This is the container's background */
+  border-radius: 20px;
+  margin-right: 5%;
+}
+.weatherGraphsButton {
+  background-color: transparent; /* Default background for buttons */
+  color: #fff; /* Default text color for buttons */
+  border: none;
+  padding: 10px 20px;
+  margin-right: 5px; /* Space between buttons */
+  cursor: pointer;
+  /* Additional styles */
+  border-radius: 20px; /* Rounded corners for buttons */
+  outline: none; /* Remove outline */
+  transition: background-color 0.3s, color 0.3s; /* Smooth transition for color and background */
+
+  font-size: 16px;
+  font-weight: 300;
+}
+
+.weatherGraphsButton.active {
+  background-color: #8cd2ce; /* Active background color for buttons */
+  color: #fff; /* Active text color for buttons */
 }
