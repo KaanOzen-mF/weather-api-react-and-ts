@@ -77,23 +77,48 @@ export default function WeatherGraphs() {
     }
   }, [weatherData]);
 
+  const getButtonClass = (key: "humidity" | "precip_mm" | "uv") => {
+    return `weatherGraphsButton ${activeDataKey === key ? "active" : ""}`;
+  };
+
   return (
     <WeatherGraphsWrapper>
-      <button onClick={() => setActiveDataKey("humidity")}>Humidity</button>
-      <button onClick={() => setActiveDataKey("precip_mm")}>
-        Precipitation
-      </button>
-      <button onClick={() => setActiveDataKey("uv")}>UV</button>
+      <div className="weatherGraphsTitleBtnContainer">
+        <div className="weatherGrapsTitleContainer">
+          <p>Overview</p>
+        </div>
+        <div className="weatherGrapsButtonContainer">
+          <button
+            className={getButtonClass("humidity")}
+            onClick={() => setActiveDataKey("humidity")}
+          >
+            Humidity
+          </button>
+          <button
+            className={getButtonClass("precip_mm")}
+            onClick={() => setActiveDataKey("precip_mm")}
+          >
+            Precipitation
+          </button>
+          <button
+            className={getButtonClass("uv")}
+            onClick={() => setActiveDataKey("uv")}
+          >
+            UV
+          </button>
+        </div>
+      </div>
+
       <LineChart
-        width={600}
+        width={875}
         height={300}
         data={chartData}
         margin={{ top: 5, right: 20, bottom: 5, left: 0 }}
       >
-        <Line type="monotone" dataKey={activeDataKey} stroke="#030303" />
+        <Line type="monotone" dataKey={activeDataKey} stroke="#8cd2ce" />
         <CartesianGrid stroke="#ccc" />
-        <XAxis dataKey="time" />
-        <YAxis />
+        <XAxis dataKey="time" stroke="#ccc" />
+        <YAxis stroke="#ccc" />
         <Tooltip />
       </LineChart>
     </WeatherGraphsWrapper>
