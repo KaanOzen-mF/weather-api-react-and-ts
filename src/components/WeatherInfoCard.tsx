@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { fetchCurrentWeather } from "../utils/fetchWeather";
+import { useTemperature } from "./TemperatureContext";
 
 interface WeatherDataProps {
   location: {
@@ -30,6 +31,7 @@ interface WeatherDataProps {
 export default function WeatherInfoCard() {
   const [weatherData, setWeatherData] = useState<WeatherDataProps | null>(null);
 
+  const { isCelsius } = useTemperature();
   useEffect(() => {
     navigator.geolocation.getCurrentPosition((position) => {
       const { latitude, longitude } = position.coords;
@@ -40,7 +42,11 @@ export default function WeatherInfoCard() {
       );
     });
   }, []);
-
+  const convertTemperature = (temp: number) => {
+    return isCelsius
+      ? `${temp.toFixed()}°C`
+      : `${((temp * 9) / 5 + 32).toFixed()}°F`;
+  };
   return (
     <div className="weatherHourlyCardContainer">
       {weatherData?.forecast.forecastday[0].hour.map((i, k) => (
@@ -49,7 +55,7 @@ export default function WeatherInfoCard() {
             {i.time.split(" ")[1].split(":")[0]} am
           </p>
           <img src={i.condition.icon} alt="" />
-          <p className="weatherCardText">{i.temp_c}°</p>
+          <p className="weatherCardText">{convertTemperature(i.temp_c)}</p>
         </div>
       ))}
     </div>
