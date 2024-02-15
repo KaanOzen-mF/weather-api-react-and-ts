@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { fetchCurrentWeather } from "../utils/fetchWeather";
 import { useTemperature } from "./TemperatureContext";
+import { FaX } from "react-icons/fa6";
 
 type CityWeather = {
   name: string;
@@ -40,7 +41,10 @@ const Modal: React.FC<ModalProps> = ({ show, onClose, children }) => {
   );
 };
 
-const CityCard: React.FC<{ cityWeather: CityWeather }> = ({ cityWeather }) => {
+const CityCard: React.FC<{
+  cityWeather: CityWeather;
+  onRemove: () => void;
+}> = ({ cityWeather, onRemove }) => {
   const { isCelsius } = useTemperature();
 
   const maxTemp = isCelsius
@@ -61,6 +65,8 @@ const CityCard: React.FC<{ cityWeather: CityWeather }> = ({ cityWeather }) => {
         src={cityWeather.forecast.forecastday[0].day.condition.icon}
         alt="Weather Icon"
       />
+      <FaX onClick={onRemove} className="removeBtn" />
+      {/* Remove butonu eklendi */}
     </div>
   );
 };
@@ -103,6 +109,11 @@ const WeatherForecast: React.FC = () => {
     }
   };
 
+  const removeCity = (cityName: string) => {
+    const updatedCities = cities.filter((city) => city.name !== cityName);
+    setCities(updatedCities);
+    localStorage.setItem("cities", JSON.stringify(updatedCities)); // Güncellenen şehir listesini localStorage'a kaydet
+  };
   return (
     <div className="weather-forecast">
       <Modal show={isAdding} onClose={closeAddCityModal}>
@@ -122,7 +133,11 @@ const WeatherForecast: React.FC = () => {
         <AddCityCard onAddClick={() => setIsAdding(true)} />
 
         {cities.map((cityWeather, index) => (
-          <CityCard key={index} cityWeather={cityWeather} />
+          <CityCard
+            key={index}
+            cityWeather={cityWeather}
+            onRemove={() => removeCity(cityWeather.name)}
+          />
         ))}
       </div>
     </div>
