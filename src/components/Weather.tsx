@@ -11,6 +11,7 @@ interface WeatherDataProps {
     humidity: number;
     gust_kph: number;
     condition: {
+      text: string;
       icon: string;
     };
   };
@@ -28,7 +29,11 @@ interface WeatherDataProps {
   };
 }
 
-export default function Weather() {
+interface WeatherProps {
+  setBackground: (background: string) => void;
+}
+
+export const Weather: React.FC<WeatherProps> = ({ setBackground }) => {
   const [weatherData, setWeatherData] = useState<WeatherDataProps | null>(null);
 
   useEffect(() => {
@@ -37,10 +42,34 @@ export default function Weather() {
       Promise.all([fetchCurrentWeather(`${latitude},${longitude}`)]).then(
         ([currentWeather]) => {
           setWeatherData(currentWeather);
+          const weatherCondition = currentWeather.current.condition.text;
+          updateBackground(weatherCondition, setBackground);
+          console.log(currentWeather);
         }
       );
     });
-  }, []);
+  }, [setBackground]);
+
+  const updateBackground = (
+    weather: string,
+    setBackground: (background: string) => void
+  ) => {
+    let background: string;
+    switch (weather) {
+      case "Partly cloudy":
+        background = "src/assets/partlyCloudly.jpg";
+        break;
+      case "Sunny":
+        background = "src/assets/sunny.jpg";
+        break;
+      case "Mist":
+        background = "src/assets/mist.jpg";
+        break;
+      default:
+        background = "src/assets/rainy.jpg";
+    }
+    setBackground(background);
+  };
 
   return (
     <div className="weatherInfoContainer">
@@ -71,4 +100,4 @@ export default function Weather() {
       )}
     </div>
   );
-}
+};

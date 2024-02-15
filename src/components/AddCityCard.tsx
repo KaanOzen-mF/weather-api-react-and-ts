@@ -38,6 +38,7 @@ const Modal: React.FC<ModalProps> = ({ show, onClose, children }) => {
     </div>
   );
 };
+
 const CityCard: React.FC<{ cityWeather: CityWeather }> = ({ cityWeather }) => (
   <div className="city-card">
     <h2>{cityWeather.name}</h2>

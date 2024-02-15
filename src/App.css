@@ -9,10 +9,15 @@
   color: white;
 }
 
-body {
-  background: url("./assets/daoudi-aissa-Pe1Ol9oLc4o-unsplash.jpg"),
-    lightgray 100% / cover no-repeat;
+.mainPage {
+  background: url("./assets/daoudi-aissa-Pe1Ol9oLc4o-unsplash.jpg") no-repeat
+    center center fixed;
+  background-size: cover;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
+
 /* Search Bar Start */
 .searchBarIcon {
   margin-left: 6px;
@@ -130,12 +135,14 @@ body {
   font-size: 24px;
   font-style: normal;
   font-weight: 500;
+  text-shadow: 1px 0px 2px rgba(0, 0, 0, 0.6);
 }
 
 .weatherInfoSubTitle {
   font-size: 16px;
   font-style: normal;
   font-weight: 300;
+  text-shadow: 1px 0px 2px rgba(0, 0, 0, 0.6);
 }
 
 .weatherHourlyCardContainer {
@@ -309,6 +316,7 @@ body {
   margin-bottom: 12px;
   color: white;
   margin-top: 24px;
+  text-shadow: 1px 0px 2px rgba(0, 0, 0, 0.6);
 }
 
 .forecastTitleDays {
@@ -317,6 +325,8 @@ body {
   padding: 6px;
   font-size: 16px;
   font-weight: 300;
+
+  box-shadow: 1px 0px 5px 0px rgba(0, 0, 0, 0.4);
 }
 
 .forecastWeatherContainer {
@@ -403,4 +413,5 @@ body {
 .weatherGraphsButton.active {
   background-color: #8cd2ce; /* Active background color for buttons */
   color: #fff; /* Active text color for buttons */
+  box-shadow: 1px 0px 5px 0px rgba(0, 0, 0, 0.4);
 }
