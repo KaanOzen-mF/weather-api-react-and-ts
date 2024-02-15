@@ -1,13 +1,7 @@
-import { useState } from "react";
+import { useTemperature } from "./TemperatureContext";
 
 export default function TemperatureSwitch() {
-  const [isCelsius, setIsCelsius] = useState(true); // Initialize to Celsius
-
-  const toggleTemperature = () => {
-    setIsCelsius(!isCelsius); // Toggle the temperature unit
-  };
-
-  console.log(isCelsius);
+  const { isCelsius, toggleTemperature } = useTemperature();
 
   return (
     <div className="switch-container" onClick={toggleTemperature}>
