@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { fetchForecastWeather } from "../utils/fetchWeather";
+import { useTemperature } from "./TemperatureContext";
 
 interface WeatherDataProps {
   forecast: {
@@ -20,7 +21,7 @@ interface WeatherDataProps {
 
 export default function ForecastWeather() {
   const [weatherData, setWeatherData] = useState<WeatherDataProps | null>(null);
-
+  const { isCelsius } = useTemperature();
   useEffect(() => {
     navigator.geolocation.getCurrentPosition((position) => {
       const { latitude, longitude } = position.coords;
@@ -38,7 +39,11 @@ export default function ForecastWeather() {
     };
     return new Date(dateString).toLocaleDateString("en-US", options);
   };
-
+  const convertTemperature = (temp: number) => {
+    return isCelsius
+      ? `${temp.toFixed()}°C`
+      : `${((temp * 9) / 5 + 32).toFixed()}°F`;
+  };
   return (
     <div className="forecastContainer">
       <div className="forecastTitleContainer">
@@ -49,8 +54,12 @@ export default function ForecastWeather() {
         <div className="forecastWeatherContainer" key={k}>
           <div className="forecastWeatherTempContainer">
             <img src={i.day.condition.icon} alt="" />
-            <p className="forecastWeatherMaxTemp">{i.day.maxtemp_c}</p>
-            <p className="forecastWeatherMinTemp">/{i.day.mintemp_c}</p>
+            <p className="forecastWeatherMaxTemp">
+              {convertTemperature(i.day.maxtemp_c)}
+            </p>
+            <p className="forecastWeatherMinTemp">
+              /{convertTemperature(i.day.mintemp_c)}
+            </p>
           </div>
           <p>{formatDate(i.date)}</p>
         </div>
