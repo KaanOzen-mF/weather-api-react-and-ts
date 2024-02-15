@@ -58,11 +58,16 @@
 .switch-container {
   width: 64px; /* Adjust width as needed */
   height: 38px; /* Adjust height as needed */
+  margin-left: 56px;
+  backdrop-filter: blur(10px) saturate(130%);
   background: rgba(140, 210, 206, 0.47);
   border-radius: 30px;
   position: relative;
   cursor: pointer;
   user-select: none; /* Prevent text selection */
+  box-shadow: -1px 0px 5px 0px rgba(0, 0, 0, 0.75) inset;
+  -webkit-box-shadow: -1px 0px 5px 0px rgba(0, 0, 0, 0.75) inset;
+  -moz-box-shadow: -1px 0px 5px 0px rgba(0, 0, 0, 0.75) inset;
 }
 
 .switch {
@@ -75,8 +80,8 @@
 }
 
 .switch-circle {
-  width: 38px; /* Circle size */
-  height: 38px; /* Circle size */
+  width: 36px; /* Circle size */
+  height: 36px; /* Circle size */
   backdrop-filter: blur(10px) saturate(130%);
   background-color: #b8b7b7;
   border-radius: 50%;
@@ -84,6 +89,10 @@
   top: 0;
   left: 0;
   transition: transform 0.3s ease;
+
+  box-shadow: 1px 0px 5px 0px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: 1px 0px 5px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 1px 0px 5px 0px rgba(0, 0, 0, 0.75);
 }
 
 .celsius-active .switch-circle {
