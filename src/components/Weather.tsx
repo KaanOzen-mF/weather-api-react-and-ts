@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { fetchCurrentWeather } from "../utils/fetchWeather";
-
+import { useTemperature } from "./TemperatureContext";
 interface WeatherDataProps {
   location: {
     name: string;
@@ -35,7 +35,7 @@ interface WeatherProps {
 
 export const Weather: React.FC<WeatherProps> = ({ setBackground }) => {
   const [weatherData, setWeatherData] = useState<WeatherDataProps | null>(null);
-
+  const { isCelsius } = useTemperature();
   useEffect(() => {
     navigator.geolocation.getCurrentPosition((position) => {
       const { latitude, longitude } = position.coords;
@@ -49,6 +49,12 @@ export const Weather: React.FC<WeatherProps> = ({ setBackground }) => {
       );
     });
   }, [setBackground]);
+
+  const convertTemperature = (temp: number) => {
+    return isCelsius
+      ? `${temp.toFixed()}°C`
+      : `${((temp * 9) / 5 + 32).toFixed()}°F`;
+  };
 
   const updateBackground = (
     weather: string,
@@ -83,7 +89,9 @@ export const Weather: React.FC<WeatherProps> = ({ setBackground }) => {
             </p>
           </div>
           <div className="weatherInfoCard">
-            <p className="weatherInfoTitle">{weatherData.current.temp_c}°</p>
+            <p className="weatherInfoTitle">
+              {convertTemperature(weatherData.current.temp_c)}
+            </p>
             <p className="weatherInfoSubTitle">Temperature</p>
           </div>
           <div className="weatherInfoCard">
