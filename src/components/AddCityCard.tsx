@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { fetchCurrentWeather } from "../utils/fetchWeather";
+import { useTemperature } from "./TemperatureContext";
 
 type CityWeather = {
   name: string;
@@ -39,19 +40,30 @@ const Modal: React.FC<ModalProps> = ({ show, onClose, children }) => {
   );
 };
 
-const CityCard: React.FC<{ cityWeather: CityWeather }> = ({ cityWeather }) => (
-  <div className="city-card">
-    <h2>{cityWeather.name}</h2>
-    <p>
-      {cityWeather.forecast.forecastday[0].day.maxtemp_c}°C /{" "}
-      {cityWeather.forecast.forecastday[0].day.mintemp_c}°C
-    </p>
-    <img
-      src={cityWeather.forecast.forecastday[0].day.condition.icon}
-      alt="Weather Icon"
-    />
-  </div>
-);
+const CityCard: React.FC<{ cityWeather: CityWeather }> = ({ cityWeather }) => {
+  const { isCelsius } = useTemperature();
+
+  const maxTemp = isCelsius
+    ? cityWeather.forecast.forecastday[0].day.maxtemp_c
+    : (cityWeather.forecast.forecastday[0].day.maxtemp_c * 9) / 5 + 32;
+  const minTemp = isCelsius
+    ? cityWeather.forecast.forecastday[0].day.mintemp_c
+    : (cityWeather.forecast.forecastday[0].day.mintemp_c * 9) / 5 + 32;
+
+  return (
+    <div className="city-card">
+      <h2>{cityWeather.name}</h2>
+      <p>
+        {maxTemp.toFixed()}°{isCelsius ? "C" : "F"} / {minTemp.toFixed()}°
+        {isCelsius ? "C" : "F"}
+      </p>
+      <img
+        src={cityWeather.forecast.forecastday[0].day.condition.icon}
+        alt="Weather Icon"
+      />
+    </div>
+  );
+};
 
 const AddCityCard: React.FC<{ onAddClick: () => void }> = ({ onAddClick }) => {
   return (
