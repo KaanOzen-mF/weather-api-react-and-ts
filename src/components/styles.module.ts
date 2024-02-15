@@ -8,6 +8,9 @@ export const WeatherWrapper = styled.div`
   background: rgba(98, 96, 96, 0.47);
   backdrop-filter: blur(6.900000095367432px);
   margin-left: 5%;
+  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
 `;
 
 export const NavbarWrapper = styled.div`
@@ -24,14 +27,9 @@ export const SearchBarWrapper = styled.div`
   width: fit-content;
   padding: 6px;
   align-items: center;
-`;
-
-export const LanguageChangeButtonWrapper = styled.div`
-  display: flex;
-  align-items: center;
-  backdrop-filter: blur(10px) saturate(130%);
-  background-color: #b8b7b7;
-  border-radius: 24px;
+  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
 `;
 
 export const CityWeatherWrapper = styled.div`
@@ -48,6 +46,9 @@ export const ForecastWeatherWrapper = styled.div`
   backdrop-filter: blur(6.900000095367432px);
   margin-left: 5%;
   margin-right: 5%;
+  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
 `;
 
 export const WeatherGraphsWrapper = styled.div`
@@ -59,4 +60,7 @@ export const WeatherGraphsWrapper = styled.div`
   backdrop-filter: blur(6.900000095367432px);
   margin-left: 5%;
   margin-top: 32px;
+  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
 `;
