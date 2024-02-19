@@ -1,11 +1,58 @@
+import React, { useState, useEffect } from "react";
 import { FaSearch } from "react-icons/fa";
 import { SearchBarWrapper } from "./styles.module";
+import { fetchCitySuggestions } from "../utils/fetchWeather";
 
-export default function SearchBar() {
+const SearchBar: React.FC = () => {
+  const [searchQuery, setSearchQuery] = useState("");
+  const [suggestions, setSuggestions] = useState<any[]>([]);
+
+  useEffect(() => {
+    const loadSuggestions = async () => {
+      const newSuggestions = await fetchCitySuggestions(searchQuery);
+      setSuggestions(newSuggestions);
+    };
+
+    if (searchQuery.length > 2) {
+      loadSuggestions();
+    } else {
+      setSuggestions([]);
+    }
+  }, [searchQuery]);
+
+  const handleSuggestionClick = (name: string) => {
+    setSearchQuery(name);
+    setSuggestions([]);
+  };
+
   return (
-    <SearchBarWrapper>
-      <FaSearch color="white" className="searchBarIcon" />
-      <input placeholder="Search city or postcode" className="searchBar" />
-    </SearchBarWrapper>
+    <>
+      <SearchBarWrapper>
+        <div className="searchBox">
+          <FaSearch color="white" />
+          <input
+            placeholder="Search city"
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            className="searchBar"
+          />
+        </div>
+
+        {suggestions.length > 0 && (
+          <div className="suggestionBox">
+            {suggestions.map((suggestion, index) => (
+              <div
+                key={index}
+                onClick={() => handleSuggestionClick(suggestion.name)}
+              >
+                {suggestion.name}, {suggestion.country}
+              </div>
+            ))}
+          </div>
+        )}
+      </SearchBarWrapper>
+    </>
   );
-}
+};
+
+export default SearchBar;
