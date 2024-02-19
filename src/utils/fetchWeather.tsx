@@ -19,16 +19,12 @@ const fetchCurrentWeather = async (query: string) => {
   }
 };
 
-const fetchForecastWeather = async (
-  latitude: number,
-  longitude: number,
-  days: number = 3
-) => {
+const fetchForecastWeather = async (query: string, days: number = 3) => {
   const options = {
     method: "GET",
     url: "https://weatherapi-com.p.rapidapi.com/forecast.json",
     params: {
-      q: `${latitude},${longitude}`,
+      q: query,
       days: days,
     },
     headers: {
