@@ -44,4 +44,29 @@ const fetchForecastWeather = async (
   }
 };
 
-export { fetchCurrentWeather, fetchForecastWeather };
+const fetchCitySuggestions = async (query: string): Promise<any[]> => {
+  if (!query) return [];
+  try {
+    const options = {
+      method: "GET",
+      url: "https://weatherapi-com.p.rapidapi.com/search.json",
+      params: { q: query },
+      headers: {
+        "X-RapidAPI-Key": "b12886698dmsh2a39c211cc8b4aep12a465jsn115794388fb5",
+        "X-RapidAPI-Host": "weatherapi-com.p.rapidapi.com",
+      },
+    };
+
+    const response = await axios.request(options);
+    return response.data.map((item: any) => ({
+      name: item.name,
+      region: item.region,
+      country: item.country,
+    }));
+  } catch (error) {
+    console.error("Fetching city suggestions failed:", error);
+    return [];
+  }
+};
+
+export { fetchCurrentWeather, fetchForecastWeather, fetchCitySuggestions };
