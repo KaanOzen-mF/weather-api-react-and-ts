@@ -19,18 +19,40 @@ interface WeatherDataProps {
   };
 }
 
-export default function ForecastWeather() {
+interface WeatherProps {
+  selectedCity: string;
+}
+
+export const ForecastWeather: React.FC<WeatherProps> = ({ selectedCity }) => {
   const [weatherData, setWeatherData] = useState<WeatherDataProps | null>(null);
   const { isCelsius } = useTemperature();
+
   useEffect(() => {
-    navigator.geolocation.getCurrentPosition((position) => {
-      const { latitude, longitude } = position.coords;
-      fetchForecastWeather(latitude, longitude).then((currentWeather) => {
+    if (selectedCity) {
+      fetchForecastWeather(selectedCity).then((currentWeather) => {
         setWeatherData(currentWeather);
       });
-    });
-  }, []);
+    } else {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          const { latitude, longitude } = position.coords;
+          fetchForecastWeather(`${latitude},${longitude}`).then(
+            (currentWeather) => {
+              setWeatherData(currentWeather);
+            }
+          );
+        },
+        (error) => {
+          console.error(
+            "An error occurred while retrieving location information:",
+            error
+          );
+        }
+      );
+    }
+  }, [selectedCity]);
 
+  console.log(selectedCity);
   const formatDate = (dateString: string): string => {
     const options: Intl.DateTimeFormatOptions = {
       day: "2-digit",
@@ -44,6 +66,7 @@ export default function ForecastWeather() {
       ? `${temp.toFixed()}°C`
       : `${((temp * 9) / 5 + 32).toFixed()}°F`;
   };
+
   return (
     <div className="forecastContainer">
       <div className="forecastTitleContainer">
@@ -66,4 +89,4 @@ export default function ForecastWeather() {
       ))}
     </div>
   );
-}
+};
