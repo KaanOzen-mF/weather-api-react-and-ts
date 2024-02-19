@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { fetchCurrentWeather } from "../utils/fetchWeather";
 import { useTemperature } from "./TemperatureContext";
+
 interface WeatherDataProps {
   location: {
     name: string;
@@ -31,24 +32,44 @@ interface WeatherDataProps {
 
 interface WeatherProps {
   setBackground: (background: string) => void;
+  selectedCity: string;
 }
 
-export const Weather: React.FC<WeatherProps> = ({ setBackground }) => {
+export const Weather: React.FC<WeatherProps> = ({
+  setBackground,
+  selectedCity,
+}) => {
   const [weatherData, setWeatherData] = useState<WeatherDataProps | null>(null);
   const { isCelsius } = useTemperature();
+
   useEffect(() => {
-    navigator.geolocation.getCurrentPosition((position) => {
-      const { latitude, longitude } = position.coords;
-      Promise.all([fetchCurrentWeather(`${latitude},${longitude}`)]).then(
-        ([currentWeather]) => {
-          setWeatherData(currentWeather);
-          const weatherCondition = currentWeather.current.condition.text;
-          updateBackground(weatherCondition, setBackground);
-          console.log(currentWeather);
+    if (selectedCity) {
+      fetchCurrentWeather(selectedCity).then((currentWeather) => {
+        setWeatherData(currentWeather);
+        const weatherCondition = currentWeather.current.condition.text;
+        updateBackground(weatherCondition, setBackground);
+      });
+    } else {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          const { latitude, longitude } = position.coords;
+          fetchCurrentWeather(`${latitude},${longitude}`).then(
+            (currentWeather) => {
+              setWeatherData(currentWeather);
+              const weatherCondition = currentWeather.current.condition.text;
+              updateBackground(weatherCondition, setBackground);
+            }
+          );
+        },
+        (error) => {
+          console.error(
+            "An error occurred while retrieving location information:",
+            error
+          );
         }
       );
-    });
-  }, [setBackground]);
+    }
+  }, [selectedCity, setBackground]);
 
   const convertTemperature = (temp: number) => {
     return isCelsius
