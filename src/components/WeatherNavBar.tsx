@@ -2,10 +2,14 @@ import SearchBar from "./SearchBar";
 import { NavbarWrapper } from "./styles.module";
 import TemperatureSwitch from "./TemperatureSwitch";
 
-export const WeatherNavBar = () => {
+interface WeatherNavBarProps {
+  onCitySelect: (city: string) => void;
+}
+
+export const WeatherNavBar = ({ onCitySelect }: WeatherNavBarProps) => {
   return (
     <NavbarWrapper>
-      <SearchBar />
+      <SearchBar onCitySelect={onCitySelect} />
       <TemperatureSwitch />
     </NavbarWrapper>
   );
