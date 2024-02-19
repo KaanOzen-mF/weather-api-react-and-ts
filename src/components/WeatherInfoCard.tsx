@@ -28,25 +28,47 @@ interface WeatherDataProps {
     ];
   };
 }
-export default function WeatherInfoCard() {
+
+interface WeatherProps {
+  selectedCity: string;
+}
+
+export const WeatherInfoCard: React.FC<WeatherProps> = ({ selectedCity }) => {
   const [weatherData, setWeatherData] = useState<WeatherDataProps | null>(null);
 
   const { isCelsius } = useTemperature();
+
   useEffect(() => {
-    navigator.geolocation.getCurrentPosition((position) => {
-      const { latitude, longitude } = position.coords;
-      Promise.all([fetchCurrentWeather(`${latitude},${longitude}`)]).then(
-        ([currentWeather]) => {
-          setWeatherData(currentWeather);
+    if (selectedCity) {
+      fetchCurrentWeather(selectedCity).then((currentWeather) => {
+        setWeatherData(currentWeather);
+      });
+    } else {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          const { latitude, longitude } = position.coords;
+          Promise.all([fetchCurrentWeather(`${latitude},${longitude}`)]).then(
+            ([currentWeather]) => {
+              setWeatherData(currentWeather);
+            }
+          );
+        },
+        (error) => {
+          console.error(
+            "An error occurred while retrieving location information:",
+            error
+          );
         }
       );
-    });
-  }, []);
+    }
+  }, [selectedCity]);
+
   const convertTemperature = (temp: number) => {
     return isCelsius
       ? `${temp.toFixed()}°C`
       : `${((temp * 9) / 5 + 32).toFixed()}°F`;
   };
+
   return (
     <div className="weatherHourlyCardContainer">
       {weatherData?.forecast.forecastday[0].hour.map((i, k) => (
@@ -60,4 +82,4 @@ export default function WeatherInfoCard() {
       ))}
     </div>
   );
-}
+};
