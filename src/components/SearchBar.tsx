@@ -3,7 +3,9 @@ import { FaSearch } from "react-icons/fa";
 import { SearchBarWrapper } from "./styles.module";
 import { fetchCitySuggestions } from "../utils/fetchWeather";
 
-const SearchBar: React.FC = () => {
+const SearchBar: React.FC<{ onCitySelect: (city: string) => void }> = ({
+  onCitySelect,
+}) => {
   const [searchQuery, setSearchQuery] = useState("");
   const [suggestions, setSuggestions] = useState<any[]>([]);
 
@@ -21,8 +23,9 @@ const SearchBar: React.FC = () => {
   }, [searchQuery]);
 
   const handleSuggestionClick = (name: string) => {
-    setSearchQuery(name);
+    setSearchQuery(name); // Bu, input değerini günceller
     setSuggestions([]);
+    onCitySelect(name); // Seçilen şehri üst bileşene iletir
   };
 
   return (
