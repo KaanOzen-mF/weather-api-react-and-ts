@@ -35,7 +35,9 @@ const Modal: React.FC<ModalProps> = ({ show, onClose, children }) => {
     <div className="modal-backdrop">
       <div className="modal-content">
         {children}
-        <button onClick={onClose}>Close</button>
+        <button className="modalCloseBtn" onClick={onClose}>
+          Close
+        </button>
       </div>
     </div>
   );
@@ -124,8 +126,14 @@ const WeatherForecast: React.FC = () => {
             onChange={(e) => setNewCityName(e.target.value)}
             placeholder="Enter city name"
             onKeyDown={(e) => e.key === "Enter" && addCity(newCityName)}
+            className="addCityInput"
           />
-          <button onClick={() => addCity(newCityName)}>Add</button>
+          <button
+            onClick={() => addCity(newCityName)}
+            className="addCityButton"
+          >
+            Add
+          </button>
         </div>
       </Modal>
 
