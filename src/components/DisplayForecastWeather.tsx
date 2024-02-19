@@ -1,10 +1,16 @@
-import ForecastWeather from "./ForecastWeather";
+import { ForecastWeather } from "./ForecastWeather";
 import { ForecastWeatherWrapper } from "./styles.module";
 
-export default function DisplayForecastWeather() {
+interface DisplayForecastWeatherProps {
+  selectedCity: string;
+}
+
+export default function DisplayForecastWeather({
+  selectedCity,
+}: DisplayForecastWeatherProps) {
   return (
     <ForecastWeatherWrapper>
-      <ForecastWeather />
+      <ForecastWeather selectedCity={selectedCity} />
     </ForecastWeatherWrapper>
   );
 }
