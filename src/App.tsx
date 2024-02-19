@@ -9,6 +9,11 @@ import { TemperatureProvider } from "./components/TemperatureContext";
 
 function App() {
   const [background, setBackground] = useState<string>("");
+  const [selectedCity, setSelectedCity] = useState<string>(""); // Seçilen şehir için state
+
+  const handleCitySelect = (city: string) => {
+    setSelectedCity(city); // Seçilen şehri güncelle
+  };
 
   return (
     <TemperatureProvider>
@@ -16,14 +21,18 @@ function App() {
         className="mainPage"
         style={{ backgroundImage: `url(${background})` }}
       >
-        <WeatherNavBar />
+        <WeatherNavBar onCitySelect={handleCitySelect} />
         <div className="weatherMainPageContainer">
           <div className="weatherMainPageLeftContainer">
-            <DisplayWeather setBackground={setBackground} />
+            <DisplayWeather
+              setBackground={setBackground}
+              selectedCity={selectedCity}
+            />
             <WeatherGraphs />
           </div>
           <div className="weatherMainPageRightContainer">
-            <DisplayForecastWeather />
+            <DisplayForecastWeather selectedCity={selectedCity} />
+
             <DisplayCityWeather />
           </div>
         </div>
