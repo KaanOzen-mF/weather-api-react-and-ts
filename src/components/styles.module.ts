@@ -15,12 +15,15 @@ export const WeatherWrapper = styled.div`
 
 export const NavbarWrapper = styled.div`
   display: flex;
-  margin-left: 80%;
+  justify-content: end;
   margin-top: 12px;
+  margin-right: 42px;
 `;
 
 export const SearchBarWrapper = styled.div`
   display: flex;
+  flex-direction: column;
+  position: relative;
   border-radius: 24px;
   backdrop-filter: blur(10px) saturate(130%);
   background-color: rgba(98, 96, 96, 0.45);
@@ -30,6 +33,7 @@ export const SearchBarWrapper = styled.div`
   box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
   -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
   -moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
+  z-index: 2;
 `;
 
 export const CityWeatherWrapper = styled.div`
