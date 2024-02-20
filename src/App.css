@@ -178,11 +178,12 @@
 
 .weatherHourlyCardContainer {
   display: flex;
+  flex-direction: column;
   text-align: center;
-  overflow-x: scroll;
-  width: 90%;
+  width: 100%;
   align-self: center;
   margin-top: 12px;
+  margin-left: 12px;
 }
 
 .weatherCardText {
@@ -195,11 +196,23 @@
 .weatherHourlyCard {
   border-radius: 16px;
   background: #cdcdcd;
-  padding: 12px 28px;
+  padding: 22px 0;
   flex-direction: column;
   justify-content: center;
+  text-align: center;
   align-items: center;
   margin-right: 24px;
+  margin-left: 24px;
+  margin-bottom: 36px;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.swiper-pagination-bullet-active {
+  background-color: #8cd2ce !important;
 }
 
 /* Chrome, Safari, Edge */
@@ -462,7 +475,6 @@
   color: #fff; /* Default text color for buttons */
   border: none;
   padding: 10px 20px;
-  margin-right: 5px; /* Space between buttons */
   cursor: pointer;
   /* Additional styles */
   border-radius: 20px; /* Rounded corners for buttons */
