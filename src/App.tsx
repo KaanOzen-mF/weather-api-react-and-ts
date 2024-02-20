@@ -3,7 +3,7 @@ import DisplayCityWeather from "./components/DisplayCityWeather";
 import { DisplayWeather } from "./components/DisplayWeather";
 import DisplayForecastWeather from "./components/DisplayForecastWeather";
 import { WeatherNavBar } from "./components/WeatherNavBar";
-import WeatherGraphs from "./components/WeatherGraphs";
+import { WeatherGraphs } from "./components/WeatherGraphs";
 import { useState } from "react";
 import { TemperatureProvider } from "./components/TemperatureContext";
 
@@ -28,7 +28,7 @@ function App() {
               setBackground={setBackground}
               selectedCity={selectedCity}
             />
-            <WeatherGraphs />
+            <WeatherGraphs selectedCity={selectedCity} />
           </div>
           <div className="weatherMainPageRightContainer">
             <DisplayForecastWeather selectedCity={selectedCity} />
