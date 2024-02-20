@@ -92,7 +92,6 @@ export const WeatherGraphs: React.FC<WeatherGraphsProps> = ({
 
   useEffect(() => {
     if (weatherData) {
-      console.log(weatherData);
       const transformedData = weatherData.forecast.forecastday[0].hour.map(
         (hour) => ({
           time: hour.time.split(" ")[1],
