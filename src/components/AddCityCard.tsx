@@ -2,6 +2,10 @@ import React, { useState } from "react";
 import { fetchCurrentWeather } from "../utils/fetchWeather";
 import { useTemperature } from "./TemperatureContext";
 import { FaX } from "react-icons/fa6";
+import "swiper/css";
+import "swiper/css/pagination";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Pagination } from "swiper/modules";
 
 type CityWeather = {
   name: string;
@@ -115,8 +119,9 @@ const WeatherForecast: React.FC = () => {
     setCities(updatedCities);
     localStorage.setItem("cities", JSON.stringify(updatedCities));
   };
+
   return (
-    <div className="weather-forecast">
+    <>
       <Modal show={isAdding} onClose={closeAddCityModal}>
         <div className="add-city-modal">
           <input
@@ -135,19 +140,29 @@ const WeatherForecast: React.FC = () => {
           </button>
         </div>
       </Modal>
-
-      <div className="city-list">
-        <AddCityCard onAddClick={() => setIsAdding(true)} />
-
+      <Swiper
+        slidesPerView={4}
+        spaceBetween={10}
+        grabCursor={true}
+        pagination={{
+          clickable: true,
+        }}
+        modules={[Pagination]}
+        className="citySwiper"
+      >
+        <SwiperSlide className="citySlider">
+          <AddCityCard onAddClick={() => setIsAdding(true)} />
+        </SwiperSlide>
         {cities.map((cityWeather, index) => (
-          <CityCard
-            key={index}
-            cityWeather={cityWeather}
-            onRemove={() => removeCity(cityWeather.name)}
-          />
+          <SwiperSlide key={index} className="citySlider">
+            <CityCard
+              cityWeather={cityWeather}
+              onRemove={() => removeCity(cityWeather.name)}
+            />
+          </SwiperSlide>
         ))}
-      </div>
-    </div>
+      </Swiper>
+    </>
   );
 };
 
