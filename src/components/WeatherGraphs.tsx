@@ -46,7 +46,13 @@ interface ChartData {
   uv: number;
 }
 
-export default function WeatherGraphs() {
+interface WeatherGraphsProps {
+  selectedCity?: string;
+}
+
+export const WeatherGraphs: React.FC<WeatherGraphsProps> = ({
+  selectedCity,
+}) => {
   const [weatherData, setWeatherData] = useState<WeatherDataProps | null>(null);
   const [chartData, setChartData] = useState<ChartData[]>([]);
   const [activeDataKey, setActiveDataKey] = useState<
@@ -54,16 +60,39 @@ export default function WeatherGraphs() {
   >("humidity");
 
   useEffect(() => {
-    navigator.geolocation.getCurrentPosition((position) => {
-      const { latitude, longitude } = position.coords;
-      fetchCurrentWeather(`${latitude},${longitude}`).then((currentWeather) => {
-        setWeatherData(currentWeather);
-      });
-    });
-  }, []);
+    const fetchWeatherData = async () => {
+      let data;
+      if (selectedCity) {
+        data = await fetchCurrentWeather(selectedCity);
+      } else {
+        data = await new Promise((resolve, reject) => {
+          navigator.geolocation.getCurrentPosition(
+            async (position) => {
+              const { latitude, longitude } = position.coords;
+              try {
+                const weatherData = await fetchCurrentWeather(
+                  `${latitude},${longitude}`
+                );
+                resolve(weatherData);
+              } catch (error) {
+                reject(error);
+              }
+            },
+            (error) => {
+              reject(error);
+            }
+          );
+        });
+      }
+      setWeatherData(data);
+    };
+
+    fetchWeatherData();
+  }, [selectedCity]);
 
   useEffect(() => {
     if (weatherData) {
+      console.log(weatherData);
       const transformedData = weatherData.forecast.forecastday[0].hour.map(
         (hour) => ({
           time: hour.time.split(" ")[1],
@@ -123,4 +152,4 @@ export default function WeatherGraphs() {
       </LineChart>
     </WeatherGraphsWrapper>
   );
-}
+};
