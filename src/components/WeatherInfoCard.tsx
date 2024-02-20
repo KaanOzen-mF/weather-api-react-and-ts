@@ -1,6 +1,10 @@
 import { useState, useEffect } from "react";
 import { fetchCurrentWeather } from "../utils/fetchWeather";
 import { useTemperature } from "./TemperatureContext";
+import "swiper/css";
+import "swiper/css/pagination";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Pagination } from "swiper/modules";
 
 interface WeatherDataProps {
   location: {
@@ -70,16 +74,27 @@ export const WeatherInfoCard: React.FC<WeatherProps> = ({ selectedCity }) => {
   };
 
   return (
-    <div className="weatherHourlyCardContainer">
+    <Swiper
+      slidesPerView={7}
+      spaceBetween={10}
+      grabCursor={true}
+      pagination={{
+        dynamicBullets: true,
+      }}
+      modules={[Pagination]}
+      className="weatherHourlyCardContainer"
+    >
       {weatherData?.forecast.forecastday[0].hour.map((i, k) => (
-        <div className="weatherHourlyCard" key={k}>
-          <p className="weatherCardText">
-            {i.time.split(" ")[1].split(":")[0]} am
-          </p>
-          <img src={i.condition.icon} alt="" />
-          <p className="weatherCardText">{convertTemperature(i.temp_c)}</p>
-        </div>
+        <SwiperSlide>
+          <div className="weatherHourlyCard" key={k}>
+            <p className="weatherCardText">
+              {i.time.split(" ")[1].split(":")[0]} am
+            </p>
+            <img src={i.condition.icon} alt="" />
+            <p className="weatherCardText">{convertTemperature(i.temp_c)}</p>
+          </div>
+        </SwiperSlide>
       ))}
-    </div>
+    </Swiper>
   );
 };
