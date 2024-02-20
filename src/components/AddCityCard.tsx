@@ -68,7 +68,6 @@ const CityCard: React.FC<{
         alt="Weather Icon"
       />
       <FaX onClick={onRemove} className="removeBtn" />
-      {/* Remove butonu eklendi */}
     </div>
   );
 };
@@ -105,16 +104,16 @@ const WeatherForecast: React.FC = () => {
         },
       ];
       setCities(updatedCities);
-      localStorage.setItem("cities", JSON.stringify(updatedCities)); // Save to local storage
-      setNewCityName(""); // Clear the input after adding a city
-      setIsAdding(false); // Close the modal
+      localStorage.setItem("cities", JSON.stringify(updatedCities));
+      setNewCityName("");
+      setIsAdding(false);
     }
   };
 
   const removeCity = (cityName: string) => {
     const updatedCities = cities.filter((city) => city.name !== cityName);
     setCities(updatedCities);
-    localStorage.setItem("cities", JSON.stringify(updatedCities)); // Güncellenen şehir listesini localStorage'a kaydet
+    localStorage.setItem("cities", JSON.stringify(updatedCities));
   };
   return (
     <div className="weather-forecast">
