@@ -10,8 +10,8 @@ export default function TemperatureSwitch() {
           isCelsius ? "celsius-active" : "fahrenheit-active"
         }`}
       >
-        <span className="temperature-label fahrenheit">F°</span>
-        <span className="temperature-label celsius">C°</span>
+        <span className="temperature-label fahrenheit">C°</span>
+        <span className="temperature-label celsius">F°</span>
         <div className="switch-circle"></div>
       </div>
     </div>
