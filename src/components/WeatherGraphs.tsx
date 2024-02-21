@@ -5,6 +5,7 @@ import {
   XAxis,
   YAxis,
   Tooltip,
+  ResponsiveContainer,
 } from "recharts";
 import { WeatherGraphsWrapper } from "./styles.module";
 import { useState, useEffect } from "react";
@@ -136,19 +137,18 @@ export const WeatherGraphs: React.FC<WeatherGraphsProps> = ({
           </button>
         </div>
       </div>
-
-      <LineChart
-        width={875}
-        height={300}
-        data={chartData}
-        margin={{ top: 5, right: 20, bottom: 5, left: 0 }}
-      >
-        <Line type="monotone" dataKey={activeDataKey} stroke="#8cd2ce" />
-        <CartesianGrid stroke="#ccc" />
-        <XAxis dataKey="time" stroke="#ccc" />
-        <YAxis stroke="#ccc" />
-        <Tooltip />
-      </LineChart>
+      <ResponsiveContainer height={250}>
+        <LineChart
+          data={chartData}
+          margin={{ top: 5, right: 20, bottom: 5, left: 0 }}
+        >
+          <Line type="monotone" dataKey={activeDataKey} stroke="#8cd2ce" />
+          <CartesianGrid stroke="#ccc" />
+          <XAxis dataKey="time" stroke="#ccc" />
+          <YAxis stroke="#ccc" />
+          <Tooltip />
+        </LineChart>
+      </ResponsiveContainer>
     </WeatherGraphsWrapper>
   );
 };
