@@ -13,25 +13,26 @@
   background: url("./assets/daoudi-aissa-Pe1Ol9oLc4o-unsplash.jpg") no-repeat
     center center fixed;
   background-size: cover;
-  height: 100%;
   display: flex;
   flex-direction: column;
-  padding-bottom: 3.1%;
+  min-height: 100vh;
 }
 
 /* Search Bar Start */
-.searchBarIcon {
+.searchIcon {
   margin-left: 6px;
+  font-size: 24px;
 }
 
 .searchBar {
   border: none;
-  height: 24px;
-  margin-left: 6px;
+  height: 48px;
+  margin-left: 16px;
   background: none;
   color: white;
   outline: none;
-  width: 256px;
+  width: 480px;
+  font-size: 24px;
 }
 
 .searchBox {
@@ -44,11 +45,12 @@
   position: absolute;
   top: 100%;
   left: 0;
-  width: 280px;
+  width: 496px;
   cursor: pointer;
   background-color: #8cd2ce;
   border-radius: 24px;
   padding: 6px;
+  font-size: 24px;
 }
 
 .suggestionBox div:hover {
@@ -57,31 +59,12 @@
 }
 /* Search Bar End */
 
-/* Language Change Button Start */
-.selectButton {
-  color: white;
-  backdrop-filter: blur(10px) saturate(130%);
-  background-color: #b8b7b7;
-  border: none;
-  border-radius: 24px;
-  height: 38px;
-  padding: 6px;
-  outline: none;
-  -webkit-appearance: none; /* Chrome, Safari, Opera */
-  -moz-appearance: none; /* Firefox */
-  appearance: none; /* Standart */
-}
-
-.selectIcon {
-  margin-right: 6px;
-}
-/*Language Change Button End*/
-
 /* Temperature Switch Start*/
 .switch-container {
-  width: 64px; /* Adjust width as needed */
-  height: 38px; /* Adjust height as needed */
-  margin-left: 56px;
+  width: 96px;
+  height: 64px;
+  margin-left: 96px;
+  margin-right: 12px;
   backdrop-filter: blur(10px) saturate(130%);
   background: rgba(140, 210, 206, 0.47);
   border-radius: 30px;
@@ -91,6 +74,7 @@
   box-shadow: -1px 0px 5px 0px rgba(0, 0, 0, 0.75) inset;
   -webkit-box-shadow: -1px 0px 5px 0px rgba(0, 0, 0, 0.75) inset;
   -moz-box-shadow: -1px 0px 5px 0px rgba(0, 0, 0, 0.75) inset;
+  font-size: 24px;
 }
 
 .switch {
@@ -103,8 +87,8 @@
 }
 
 .switch-circle {
-  width: 36px; /* Circle size */
-  height: 36px; /* Circle size */
+  width: 48px; /* Circle size */
+  height: 60px; /* Circle size */
   backdrop-filter: blur(10px) saturate(130%);
   background-color: #b8b7b7;
   border-radius: 50%;
@@ -123,7 +107,7 @@
 }
 
 .fahrenheit-active .switch-circle {
-  transform: translateX(25px); /* Move to the right for Fahrenheit */
+  transform: translateX(50px); /* Move to the right for Fahrenheit */
 }
 
 .temperature-label {
@@ -132,28 +116,50 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #fff; /* Label text color */
   font-weight: bold;
   transition: color 0.3s ease;
 }
 
 .celsius-active .celsius,
 .fahrenheit-active .fahrenheit {
-  color: #000; /* Active label text color */
+  color: #fff; /* Active label text color */
 }
 /* Temperature Switch End*/
 
+/*Weather Main Page Container Start*/
+.weatherMainPageContainer {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  margin-top: 12px;
+}
+
+.weatherMainPageLeftContainer {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+}
+
+.weatherMainPageRightContainer {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+}
+/*Weather Main Page Container End*/
+
+/*Weather Date Container Start*/
 .dateContainer {
-  margin-left: 6%;
+  margin-left: 5%;
 }
 
 .dateText {
-  font-size: 24px;
+  font-size: 42px;
   font-weight: 500;
-  margin-bottom: 12px;
+  margin-bottom: 3%;
   color: white;
-  margin-top: 24px;
+  margin-top: 3%;
 }
+/*Weather Date Container End*/
 
 /*Weather Components Start*/
 .weatherInfoContainer {
@@ -166,23 +172,25 @@
 }
 
 .weatherInfoTitle {
-  font-size: 24px;
+  font-size: 36px;
   font-style: normal;
   font-weight: 500;
   text-shadow: 1px 0px 2px rgba(0, 0, 0, 0.6);
 }
 
 .weatherInfoSubTitle {
-  font-size: 16px;
+  font-size: 24px;
   font-style: normal;
   font-weight: 300;
   text-shadow: 1px 0px 2px rgba(0, 0, 0, 0.6);
 }
 
+.weatherInfoImg {
+  width: 112px;
+}
+
 .weatherHourlyCardContainer {
   width: 100%;
-  margin-top: 12px;
-  margin-left: 12px;
 }
 
 .weatherCardText {
@@ -213,7 +221,6 @@
 .swiper-pagination-bullet-active {
   background-color: #8cd2ce !important;
 }
-
 /*Weather Components End*/
 
 /*City Card Start*/
@@ -396,25 +403,6 @@
   align-items: center;
 }
 
-.weatherMainPageContainer {
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-  margin-top: 12px;
-}
-
-.weatherMainPageLeftContainer {
-  display: flex;
-  flex-direction: column;
-  width: 50%;
-}
-
-.weatherMainPageRightContainer {
-  display: flex;
-  flex-direction: column;
-  width: 50%;
-}
-
 .weatherGraphsTitleBtnContainer {
   display: flex;
   justify-content: space-between;
@@ -465,4 +453,125 @@
 
 .removeBtn:hover {
   background-color: rgb(184, 17, 17);
+}
+
+/* Küçük cihazlar (telefonlar, 600px'e kadar) */
+@media only screen and (max-width: 600px) {
+  .searchIcon {
+    margin-left: 6px;
+    font-size: 16px;
+  }
+
+  .searchBar {
+    height: 24px;
+    margin-left: 12px;
+    width: 142px;
+    font-size: 16px;
+  }
+
+  .suggestionBox {
+    top: 100%;
+    width: 172px;
+    font-size: 16px;
+  }
+
+  .switch-container {
+    width: 58px;
+    height: 32px;
+    font-size: 16px;
+  }
+
+  .switch-circle {
+    width: 32px;
+    height: 30px;
+  }
+
+  .celsius-active .switch-circle {
+    transform: translateX(0);
+  }
+
+  .fahrenheit-active .switch-circle {
+    transform: translateX(25px);
+  }
+
+  .dateText {
+    font-size: 16px;
+  }
+
+  .weatherMainPageContainer {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .weatherMainPageLeftContainer {
+    width: 100%;
+  }
+
+  .weatherMainPageRightContainer {
+    width: 100%;
+    margin-top: 5%;
+  }
+
+  .weatherInfoImg {
+    width: 48px;
+  }
+
+  .weatherInfoTitle {
+    font-size: 16px;
+  }
+
+  .weatherInfoSubTitle {
+    font-size: 12px;
+  }
+
+  .weatherHourlyCardContainer {
+    width: 100%;
+    margin-top: 12px;
+    margin-left: 12px;
+  }
+
+  .weatherCardText {
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    margin-bottom: 6px;
+  }
+
+  .weatherHourlyCard {
+    border-radius: 16px;
+    background: #cdcdcd;
+    padding: 22px 0;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    margin-right: 24px;
+    margin-left: 24px;
+    margin-bottom: 36px;
+    -webkit-user-select: none;
+    -webkit-touch-callout: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+}
+
+/* Tabletler (600px'den 768px'e kadar) */
+@media only screen and (min-width: 600px) and (max-width: 768px) {
+}
+
+/* Küçük tabletler / büyük telefonlar (600px'den 900px'e kadar) */
+@media only screen and (min-width: 600px) and (max-width: 900px) {
+}
+
+/* Yatay tabletler ve küçük dizüstü bilgisayarlar (768px'den 1024px'e kadar) */
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+}
+
+/* Büyük tabletler ve dizüstü bilgisayarlar (1024px'den 1200px'e kadar) */
+@media only screen and (min-width: 1024px) and (max-width: 1200px) {
+}
+
+/* Büyük ekranlar (1200px ve daha büyük) */
+@media only screen and (min-width: 1200px) {
 }
