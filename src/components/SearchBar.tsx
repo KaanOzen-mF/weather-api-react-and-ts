@@ -32,7 +32,7 @@ const SearchBar: React.FC<{ onCitySelect: (city: string) => void }> = ({
     <>
       <SearchBarWrapper>
         <div className="searchBox">
-          <FaSearch color="white" />
+          <FaSearch color="white" className="searchIcon" />
           <input
             placeholder="Search city"
             value={searchQuery}
