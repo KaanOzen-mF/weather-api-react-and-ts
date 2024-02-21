@@ -102,7 +102,11 @@ export const Weather: React.FC<WeatherProps> = ({
     <div className="weatherInfoContainer">
       {weatherData && (
         <>
-          <img src={weatherData.current.condition.icon} alt="" />
+          <img
+            className="weatherInfoImg"
+            src={weatherData.current.condition.icon}
+            alt=""
+          />
           <div className="weatherInfoCard">
             <p className="weatherInfoTitle">{weatherData.location.name}</p>
             <p className="weatherInfoSubTitle">
