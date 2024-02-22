@@ -497,7 +497,6 @@
 }
 /*Modal End*/
 
-/* Küçük cihazlar (telefonlar, 600px'e kadar) */
 @media only screen and (max-width: 600px) {
   .searchIcon {
     margin-left: 6px;
@@ -687,22 +686,556 @@
   }
 }
 
-/* Tabletler (600px'den 768px'e kadar) */
 @media only screen and (min-width: 600px) and (max-width: 768px) {
+  .searchIcon {
+    margin-left: 6px;
+    font-size: 16px;
+  }
+
+  .searchBar {
+    height: 24px;
+    margin-left: 12px;
+    width: 142px;
+    font-size: 16px;
+  }
+
+  .suggestionBox {
+    top: 100%;
+    width: 172px;
+    font-size: 16px;
+  }
+
+  .switch-container {
+    width: 58px;
+    height: 32px;
+    font-size: 16px;
+  }
+
+  .switch-circle {
+    width: 32px;
+    height: 30px;
+  }
+
+  .celsius-active .switch-circle {
+    transform: translateX(0);
+  }
+
+  .fahrenheit-active .switch-circle {
+    transform: translateX(25px);
+  }
+
+  .dateText {
+    font-size: 16px;
+  }
+
+  .weatherMainPageContainer {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .weatherMainPageLeftContainer {
+    width: 100%;
+  }
+
+  .weatherMainPageRightContainer {
+    width: 100%;
+    margin-top: 5%;
+  }
+
+  .weatherInfoImg {
+    width: 48px;
+  }
+
+  .weatherInfoTitle {
+    font-size: 16px;
+  }
+
+  .weatherInfoSubTitle {
+    font-size: 12px;
+  }
+
+  .weatherHourlyCardContainer {
+    width: 100%;
+    margin-top: 12px;
+    margin-left: 12px;
+  }
+
+  .weatherCardText {
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    margin-bottom: 6px;
+  }
+
+  .weatherCardImg {
+    width: 64px;
+  }
+
+  .weatherHourlyCard {
+    border-radius: 16px;
+    background: #cdcdcd;
+    padding: 22px 0;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    margin-right: 24px;
+    margin-left: 24px;
+    margin-bottom: 36px;
+    -webkit-user-select: none;
+    -webkit-touch-callout: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+
+  .weatherGrapsTitleContainer {
+    font-size: 16px;
+    width: 40%;
+  }
+
+  .weatherGrapsButtonContainer {
+    background-color: #626060;
+    border-radius: 20px;
+    width: 50%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .weatherGraphsButton {
+    font-size: 12px;
+    padding: 4px 4px;
+  }
+
+  .forecastTitleContainer {
+    font-size: 16px;
+  }
+
+  .forecastTitleDays {
+    font-size: 12px;
+  }
+
+  .forecastWeatherImg {
+    width: 64px;
+  }
+  .forecastWeatherMaxTemp {
+    font-size: 16px;
+  }
+
+  .forecastWeatherMinTemp {
+    font-size: 12px;
+  }
+
+  .forecastWeatherDate {
+    font-size: 12px;
+  }
+
+  .add-city-card {
+    font-size: 16px;
+    height: 180px;
+    width: 138px;
+    margin-left: 0;
+    margin-right: 26px;
+  }
+
+  .plus-icon {
+    font-size: 16px;
+    border-radius: 64px;
+    padding: 4px 8px;
+  }
+
+  .city-card {
+    align-self: flex-start;
+    height: 160px;
+    width: 120px;
+    padding: 12px;
+  }
+
+  .cityWeatherName {
+    font-size: 16px;
+  }
+
+  .cityWeatherDegree {
+    font-size: 12px;
+  }
+
+  .cityWeatherIconImg {
+    width: 64px;
+  }
+
+  .citySlider {
+    margin-bottom: 12px;
+  }
+
+  .removeBtn {
+    margin-top: 6px;
+    width: 12px;
+    height: 12px;
+  }
 }
 
-/* Küçük tabletler / büyük telefonlar (600px'den 900px'e kadar) */
-@media only screen and (min-width: 600px) and (max-width: 900px) {
-}
-
-/* Yatay tabletler ve küçük dizüstü bilgisayarlar (768px'den 1024px'e kadar) */
 @media only screen and (min-width: 768px) and (max-width: 1024px) {
+  .searchIcon {
+    margin-left: 6px;
+    font-size: 16px;
+  }
+
+  .searchBar {
+    height: 24px;
+    margin-left: 12px;
+    width: 142px;
+    font-size: 16px;
+  }
+
+  .suggestionBox {
+    top: 100%;
+    width: 172px;
+    font-size: 16px;
+  }
+
+  .switch-container {
+    width: 58px;
+    height: 32px;
+    font-size: 16px;
+  }
+
+  .switch-circle {
+    width: 32px;
+    height: 30px;
+  }
+
+  .celsius-active .switch-circle {
+    transform: translateX(0);
+  }
+
+  .fahrenheit-active .switch-circle {
+    transform: translateX(25px);
+  }
+
+  .dateText {
+    font-size: 16px;
+  }
+
+  .weatherMainPageContainer {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .weatherMainPageLeftContainer {
+    width: 100%;
+  }
+
+  .weatherMainPageRightContainer {
+    width: 100%;
+    margin-top: 5%;
+  }
+
+  .weatherInfoImg {
+    width: 48px;
+  }
+
+  .weatherInfoTitle {
+    font-size: 16px;
+  }
+
+  .weatherInfoSubTitle {
+    font-size: 12px;
+  }
+
+  .weatherHourlyCardContainer {
+    width: 100%;
+    margin-top: 12px;
+    margin-left: 12px;
+  }
+
+  .weatherCardText {
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    margin-bottom: 6px;
+  }
+
+  .weatherCardImg {
+    width: 64px;
+  }
+
+  .weatherHourlyCard {
+    border-radius: 16px;
+    background: #cdcdcd;
+    padding: 22px 0;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    margin-right: 24px;
+    margin-left: 24px;
+    margin-bottom: 36px;
+    -webkit-user-select: none;
+    -webkit-touch-callout: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+
+  .weatherGrapsTitleContainer {
+    font-size: 16px;
+    width: 40%;
+  }
+
+  .weatherGrapsButtonContainer {
+    background-color: #626060;
+    border-radius: 20px;
+    width: 25%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .weatherGraphsButton {
+    font-size: 12px;
+    padding: 4px 4px;
+  }
+
+  .forecastTitleContainer {
+    font-size: 16px;
+  }
+
+  .forecastTitleDays {
+    font-size: 12px;
+  }
+
+  .forecastWeatherImg {
+    width: 64px;
+  }
+  .forecastWeatherMaxTemp {
+    font-size: 16px;
+  }
+
+  .forecastWeatherMinTemp {
+    font-size: 12px;
+  }
+
+  .forecastWeatherDate {
+    font-size: 12px;
+  }
+
+  .add-city-card {
+    font-size: 16px;
+    height: 180px;
+    width: 138px;
+    margin-left: 0;
+    margin-right: 26px;
+  }
+
+  .plus-icon {
+    font-size: 16px;
+    border-radius: 64px;
+    padding: 4px 8px;
+  }
+
+  .city-card {
+    align-self: flex-start;
+    height: 160px;
+    width: 120px;
+    padding: 12px;
+  }
+
+  .cityWeatherName {
+    font-size: 16px;
+  }
+
+  .cityWeatherDegree {
+    font-size: 12px;
+  }
+
+  .cityWeatherIconImg {
+    width: 64px;
+  }
+
+  .citySlider {
+    margin-bottom: 12px;
+  }
+
+  .removeBtn {
+    margin-top: 6px;
+    width: 12px;
+    height: 12px;
+  }
 }
 
-/* Büyük tabletler ve dizüstü bilgisayarlar (1024px'den 1200px'e kadar) */
 @media only screen and (min-width: 1024px) and (max-width: 1200px) {
-}
+  .searchIcon {
+    margin-left: 6px;
+    font-size: 16px;
+  }
 
-/* Büyük ekranlar (1200px ve daha büyük) */
-@media only screen and (min-width: 1200px) {
+  .searchBar {
+    height: 24px;
+    margin-left: 12px;
+    width: 142px;
+    font-size: 16px;
+  }
+
+  .suggestionBox {
+    top: 100%;
+    width: 172px;
+    font-size: 16px;
+  }
+
+  .switch-container {
+    width: 58px;
+    height: 32px;
+    font-size: 16px;
+  }
+
+  .switch-circle {
+    width: 32px;
+    height: 30px;
+  }
+
+  .celsius-active .switch-circle {
+    transform: translateX(0);
+  }
+
+  .fahrenheit-active .switch-circle {
+    transform: translateX(25px);
+  }
+
+  .dateText {
+    font-size: 16px;
+  }
+
+  .weatherInfoImg {
+    width: 48px;
+  }
+
+  .weatherInfoTitle {
+    font-size: 16px;
+  }
+
+  .weatherInfoSubTitle {
+    font-size: 12px;
+  }
+
+  .weatherHourlyCardContainer {
+    width: 100%;
+    margin-top: 12px;
+    margin-left: 12px;
+  }
+
+  .weatherCardText {
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    margin-bottom: 6px;
+  }
+
+  .weatherCardImg {
+    width: 64px;
+  }
+
+  .weatherHourlyCard {
+    border-radius: 16px;
+    background: #cdcdcd;
+    padding: 22px 0;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    margin-right: 24px;
+    margin-left: 24px;
+    margin-bottom: 36px;
+    -webkit-user-select: none;
+    -webkit-touch-callout: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+
+  .weatherGrapsTitleContainer {
+    font-size: 16px;
+    width: 40%;
+  }
+
+  .weatherGrapsButtonContainer {
+    background-color: #626060;
+    border-radius: 20px;
+    width: 35%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .weatherGraphsButton {
+    font-size: 12px;
+    padding: 4px 4px;
+  }
+
+  .forecastTitleContainer {
+    font-size: 16px;
+  }
+
+  .forecastTitleDays {
+    font-size: 12px;
+  }
+
+  .forecastWeatherImg {
+    width: 64px;
+  }
+  .forecastWeatherMaxTemp {
+    font-size: 16px;
+  }
+
+  .forecastWeatherMinTemp {
+    font-size: 12px;
+  }
+
+  .forecastWeatherDate {
+    font-size: 12px;
+  }
+
+  .add-city-card {
+    font-size: 16px;
+    height: 180px;
+    width: 138px;
+    margin-left: 0;
+    margin-right: 26px;
+  }
+
+  .plus-icon {
+    font-size: 16px;
+    border-radius: 64px;
+    padding: 4px 8px;
+  }
+
+  .city-card {
+    align-self: flex-start;
+    height: 160px;
+    width: 120px;
+    padding: 12px;
+    margin-bottom: 12px;
+  }
+
+  .cityWeatherName {
+    font-size: 16px;
+  }
+
+  .cityWeatherDegree {
+    font-size: 12px;
+  }
+
+  .cityWeatherIconImg {
+    width: 64px;
+  }
+
+  .citySlider {
+    margin-bottom: 12px;
+  }
+
+  .removeBtn {
+    margin-top: 6px;
+    width: 12px;
+    height: 12px;
+  }
 }
