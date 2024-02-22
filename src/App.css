@@ -439,25 +439,57 @@
 /*City Card End*/
 
 /*Modal Start*/
+.modalContent {
+  background: white;
+  padding: 20px;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: rgba(98, 96, 96, 0.47);
+  backdrop-filter: blur(6.900000095367432px);
+}
+
 .addCityInput {
   border: none;
   border-radius: 12px;
   height: 32px;
   margin-bottom: 12px;
+  padding: 12px;
+  font-size: 32px;
 }
 
-.addCityButton {
+.modalButtonContainer {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+}
+
+.modalAddCityBtn {
   background-color: #8cd2ce;
-  font-size: 24px;
   font-weight: 500;
   color: white;
   cursor: pointer;
-  margin-bottom: 12px;
   border-radius: 12px;
   border: none;
+  font-size: 24px;
+  padding: 6px;
 }
 
-.modal-backdrop {
+.modalCloseBtn {
+  background-color: rgb(184, 17, 17);
+  font-weight: 500;
+  color: white;
+  cursor: pointer;
+  border-radius: 12px;
+  border: none;
+  font-size: 24px;
+  padding: 6px;
+}
+
+.modalBackdrop {
   position: fixed;
   top: 0;
   left: 0;
@@ -470,31 +502,6 @@
   z-index: 1000;
 }
 
-.modal-content {
-  background: white;
-  padding: 20px;
-  border-radius: 4px;
-  display: flex;
-  flex-direction: column;
-  background: rgba(98, 96, 96, 0.47);
-  backdrop-filter: blur(6.900000095367432px);
-}
-
-.add-city-modal {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.modalCloseBtn {
-  background-color: rgb(184, 17, 17);
-  font-size: 18px;
-  font-weight: 500;
-  color: white;
-  cursor: pointer;
-  border-radius: 12px;
-  border: none;
-}
 /*Modal End*/
 
 @media only screen and (max-width: 600px) {
