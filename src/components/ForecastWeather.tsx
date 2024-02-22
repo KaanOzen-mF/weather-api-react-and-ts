@@ -76,7 +76,11 @@ export const ForecastWeather: React.FC<WeatherProps> = ({ selectedCity }) => {
       {weatherData?.forecast.forecastday.map((i, k) => (
         <div className="forecastWeatherContainer" key={k}>
           <div className="forecastWeatherTempContainer">
-            <img src={i.day.condition.icon} alt="" />
+            <img
+              className="forecastWeatherImg"
+              src={i.day.condition.icon}
+              alt=""
+            />
             <p className="forecastWeatherMaxTemp">
               {convertTemperature(i.day.maxtemp_c)}
             </p>
@@ -84,7 +88,7 @@ export const ForecastWeather: React.FC<WeatherProps> = ({ selectedCity }) => {
               /{convertTemperature(i.day.mintemp_c)}
             </p>
           </div>
-          <p>{formatDate(i.date)}</p>
+          <p className="forecastWeatherDate">{formatDate(i.date)}</p>
         </div>
       ))}
     </div>
