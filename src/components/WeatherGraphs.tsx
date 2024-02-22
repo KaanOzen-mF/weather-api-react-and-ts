@@ -137,7 +137,7 @@ export const WeatherGraphs: React.FC<WeatherGraphsProps> = ({
           </button>
         </div>
       </div>
-      <ResponsiveContainer height={250}>
+      <ResponsiveContainer height={350}>
         <LineChart
           data={chartData}
           margin={{ top: 5, right: 20, bottom: 5, left: 0 }}
