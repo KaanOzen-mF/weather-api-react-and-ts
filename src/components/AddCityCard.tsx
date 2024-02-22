@@ -62,14 +62,15 @@ const CityCard: React.FC<{
 
   return (
     <div className="city-card">
-      <h2>{cityWeather.name}</h2>
-      <p>
+      <p className="cityWeatherName">{cityWeather.name}</p>
+      <p className="cityWeatherDegree">
         {maxTemp.toFixed()}°{isCelsius ? "C" : "F"} / {minTemp.toFixed()}°
         {isCelsius ? "C" : "F"}
       </p>
       <img
         src={cityWeather.forecast.forecastday[0].day.condition.icon}
         alt="Weather Icon"
+        className="cityWeatherIconImg"
       />
       <FaX onClick={onRemove} className="removeBtn" />
     </div>
@@ -141,13 +142,41 @@ const WeatherForecast: React.FC = () => {
         </div>
       </Modal>
       <Swiper
-        slidesPerView={4}
-        spaceBetween={10}
+        slidesPerView={5}
         grabCursor={true}
         pagination={{
           clickable: true,
         }}
         modules={[Pagination]}
+        breakpoints={{
+          300: {
+            slidesPerView: 2,
+            spaceBetween: 10,
+          },
+          400: {
+            slidesPerView: 2,
+            spaceBetween: 1,
+          },
+          500: {
+            slidesPerView: 2,
+            spaceBetween: 10,
+          },
+          600: {
+            slidesPerView: 3,
+            spaceBetween: 10,
+          },
+          768: {
+            slidesPerView: 4,
+            spaceBetween: 10,
+          },
+          1024: {
+            slidesPerView: 3,
+            spaceBetween: 10,
+          },
+          1200: {
+            slidesPerView: 5,
+          },
+        }}
         className="citySwiper"
       >
         <SwiperSlide className="citySlider">
