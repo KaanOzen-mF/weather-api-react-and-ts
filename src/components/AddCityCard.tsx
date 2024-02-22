@@ -28,20 +28,33 @@ type ModalProps = {
   show: boolean;
   onClose: () => void;
   children: React.ReactNode;
+  onAddCity?: () => void;
 };
 
-const Modal: React.FC<ModalProps> = ({ show, onClose, children }) => {
+const Modal: React.FC<ModalProps> = ({
+  show,
+  onClose,
+  children,
+  onAddCity,
+}) => {
   if (!show) {
     return null;
   }
 
   return (
-    <div className="modal-backdrop">
-      <div className="modal-content">
+    <div className="modalBackdrop">
+      <div className="modalContent">
         {children}
-        <button className="modalCloseBtn" onClick={onClose}>
-          Close
-        </button>
+        <div className="modalButtonContainer">
+          {onAddCity && (
+            <button className="modalAddCityBtn" onClick={onAddCity}>
+              Add City
+            </button>
+          )}
+          <button className="modalCloseBtn" onClick={onClose}>
+            Close
+          </button>
+        </div>
       </div>
     </div>
   );
@@ -123,8 +136,12 @@ const WeatherForecast: React.FC = () => {
 
   return (
     <>
-      <Modal show={isAdding} onClose={closeAddCityModal}>
-        <div className="add-city-modal">
+      <Modal
+        show={isAdding}
+        onClose={closeAddCityModal}
+        onAddCity={() => addCity(newCityName)}
+      >
+        <div>
           <input
             type="text"
             value={newCityName}
@@ -133,12 +150,6 @@ const WeatherForecast: React.FC = () => {
             onKeyDown={(e) => e.key === "Enter" && addCity(newCityName)}
             className="addCityInput"
           />
-          <button
-            onClick={() => addCity(newCityName)}
-            className="addCityButton"
-          >
-            Add
-          </button>
         </div>
       </Modal>
       <Swiper
