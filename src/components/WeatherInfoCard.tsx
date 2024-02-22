@@ -82,6 +82,35 @@ export const WeatherInfoCard: React.FC<WeatherProps> = ({ selectedCity }) => {
         dynamicBullets: true,
       }}
       modules={[Pagination]}
+      breakpoints={{
+        300: {
+          slidesPerView: 3,
+          spaceBetween: 1,
+        },
+        400: {
+          slidesPerView: 3,
+          spaceBetween: 10,
+        },
+        500: {
+          slidesPerView: 4,
+          spaceBetween: 10,
+        },
+        600: {
+          slidesPerView: 4,
+          spaceBetween: 10,
+        },
+        768: {
+          slidesPerView: 4,
+          spaceBetween: 10,
+        },
+        1024: {
+          slidesPerView: 3,
+          spaceBetween: 30,
+        },
+        1200: {
+          slidesPerView: 8,
+        },
+      }}
       className="weatherHourlyCardContainer"
     >
       {weatherData?.forecast.forecastday[0].hour.map((i, k) => (
@@ -90,7 +119,7 @@ export const WeatherInfoCard: React.FC<WeatherProps> = ({ selectedCity }) => {
             <p className="weatherCardText">
               {i.time.split(" ")[1].split(":")[0]} am
             </p>
-            <img src={i.condition.icon} alt="" />
+            <img src={i.condition.icon} alt="" className="weatherCardImg" />
             <p className="weatherCardText">{convertTemperature(i.temp_c)}</p>
           </div>
         </SwiperSlide>
