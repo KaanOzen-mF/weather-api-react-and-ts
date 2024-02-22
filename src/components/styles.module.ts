@@ -11,6 +11,17 @@ export const WeatherWrapper = styled.div`
   box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
   -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
   -moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
+  @media only screen and (max-width: 600px) {
+    margin-right: 4%;
+  }
+
+  @media only screen and (min-width: 600px) and (max-width: 768px) {
+    margin-right: 4%;
+  }
+
+  @media only screen and (min-width: 768px) and (max-width: 1024px) {
+    margin-right: 4%;
+  }
 `;
 
 export const NavbarWrapper = styled.div`
@@ -18,6 +29,26 @@ export const NavbarWrapper = styled.div`
   justify-content: end;
   margin-top: 12px;
   margin-right: 42px;
+
+  @media only screen and (max-width: 600px) {
+    justify-content: space-between;
+    margin-right: 0;
+    margin-left: 5%;
+  }
+  @media only screen and (min-width: 600px) and (max-width: 768px) {
+    justify-content: space-between;
+    margin-right: 3%;
+    margin-left: 5%;
+  }
+
+  @media only screen and (min-width: 768px) and (max-width: 1024px) {
+    justify-content: space-between;
+    margin-right: 3%;
+    margin-left: 5%;
+  }
+  @media only screen and (min-width: 1024px) and (max-width: 1200px) {
+    margin-right: 2%;
+  }
 `;
 
 export const SearchBarWrapper = styled.div`
@@ -67,4 +98,13 @@ export const WeatherGraphsWrapper = styled.div`
   box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
   -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
   -moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
+  @media only screen and (max-width: 600px) {
+    margin-right: 4%;
+  }
+  @media only screen and (min-width: 600px) and (max-width: 768px) {
+    margin-right: 4%;
+  }
+  @media only screen and (min-width: 768px) and (max-width: 1024px) {
+    margin-right: 4%;
+  }
 `;
