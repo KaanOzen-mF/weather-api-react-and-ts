@@ -6,6 +6,7 @@ import "swiper/css";
 import "swiper/css/pagination";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination } from "swiper/modules";
+import { FaPlus } from "react-icons/fa";
 
 type CityWeather = {
   name: string;
@@ -48,11 +49,11 @@ const Modal: React.FC<ModalProps> = ({
         <div className="modalButtonContainer">
           {onAddCity && (
             <button className="modalAddCityBtn" onClick={onAddCity}>
-              Add City
+              <FaPlus />
             </button>
           )}
           <button className="modalCloseBtn" onClick={onClose}>
-            Close
+            <FaX />
           </button>
         </div>
       </div>

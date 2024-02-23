@@ -8,6 +8,10 @@
 
 ### Openmeteo
 
+### Recaharts
+
+### Swiper
+
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
 Currently, two official plugins are available:
@@ -55,20 +59,18 @@ Developing a Minimum Viable Product (MVP) for a weather app website involves ide
 Based on general user expectations for a weather app, consider including these core features:
 
 - **Current Weather Conditions:** Display temperature, humidity, wind speed, and atmospheric pressure for the user's current location or selected locations.
-- **Hourly and Daily Forecasts:** Provide short-term (next 24 hours) and long-term (7-10 days) weather forecasts including temperature highs and lows, precipitation chances, and weather conditions (sunny, cloudy, rainy, etc.).
-- **Weather Maps and Radar:** Offer a visual representation of weather patterns, including precipitation and cloud cover, possibly with animation showing movement over time.
-- **Weather Alerts and Warnings:** Integrate real-time alerts for severe weather conditions like storms, high winds, or flood warnings, sourced from reliable meteorological services.
+- **Hourly and Daily Forecasts:** Provide short-term (next 24 hours) and long-term (3 days) weather forecasts including temperature highs and lows, precipitation chances, and weather conditions (sunny, cloudy, rainy, etc.).
 - **Search and Save Locations:** Allow users to search for and save multiple locations for quick weather checks.
 
 ### 3. User Experience and Design
 
 - **Simple and Intuitive Interface:** Ensure the app is easy to navigate, with a clear layout displaying the most critical weather information upfront.
 - **Responsive Design:** Design the website to be mobile-friendly, ensuring it adjusts seamlessly across devices (smartphones, tablets, desktops).
-- **Customization:** Allow users to customize settings, such as temperature units (Celsius or Fahrenheit), wind speed units, and theme (light or dark mode).
+- **Customization:** Allow users to customize settings, such as temperature units (Celsius or Fahrenheit)
 
 ### 4. Technical Considerations
 
-- **Data Source:** I use AccuWeather for now
+- **Data Source:** I use WeatherAPI for now
 - **Performance and Scalability:** Optimize for fast loading times and ensure the infrastructure can scale with user growth.
 - **Location Services:** Integrate geolocation to automatically display weather data for the user's current location.
 
@@ -87,7 +89,5 @@ Based on general user expectations for a weather app, consider including these c
 Once the MVP is stable and receiving user traction, consider adding features like:
 
 - **Personalization:** Learning user preferences for weather information display.
-- **Social Sharing:** Options to share weather conditions and alerts on social media.
-- **Weather-related News:** Adding a section for news articles related to significant weather events.
 
 Focusing on these MVP features will help you launch a functional, user-friendly weather app website that addresses the fundamental needs of your target audience while leaving room for expansion based on user feedback and technological advancements.

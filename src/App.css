@@ -472,10 +472,10 @@
   font-weight: 500;
   color: white;
   cursor: pointer;
-  border-radius: 12px;
+  border-radius: 64px;
   border: none;
   font-size: 24px;
-  padding: 6px;
+  padding: 6px 6px 2px 6px;
 }
 
 .modalCloseBtn {
@@ -483,10 +483,10 @@
   font-weight: 500;
   color: white;
   cursor: pointer;
-  border-radius: 12px;
+  border-radius: 64px;
   border: none;
   font-size: 24px;
-  padding: 6px;
+  padding: 6px 6px 2px 6px;
 }
 
 .modalBackdrop {
@@ -505,6 +505,27 @@
 /*Modal End*/
 
 @media only screen and (max-width: 600px) {
+  .addCityInput {
+    border: none;
+    border-radius: 12px;
+    height: 32px;
+    margin-bottom: 12px;
+    padding: 6px;
+    font-size: 18px;
+  }
+
+  .modalContent {
+    background: white;
+    padding: 20;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: rgba(98, 96, 96, 0.47);
+    backdrop-filter: blur(6.900000095367432px);
+  }
+
   .searchIcon {
     margin-left: 6px;
     font-size: 16px;

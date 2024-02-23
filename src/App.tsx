@@ -9,10 +9,10 @@ import { TemperatureProvider } from "./components/TemperatureContext";
 
 function App() {
   const [background, setBackground] = useState<string>("");
-  const [selectedCity, setSelectedCity] = useState<string>(""); // Seçilen şehir için state
+  const [selectedCity, setSelectedCity] = useState<string>("");
 
   const handleCitySelect = (city: string) => {
-    setSelectedCity(city); // Seçilen şehri güncelle
+    setSelectedCity(city);
   };
 
   return (
