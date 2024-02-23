@@ -1,19 +1,47 @@
 import "./App.css";
-import DisplayCityWeather from "./components/DisplayCityWeather";
-import { DisplayWeather } from "./components/DisplayWeather";
-import DisplayForecastWeather from "./components/DisplayForecastWeather";
-import { WeatherNavBar } from "./components/WeatherNavBar";
-import { WeatherGraphs } from "./components/WeatherGraphs";
-import { useState } from "react";
+import DisplayCityWeather from "./components/CityWeatherComponents/DisplayCityWeather";
+import { DisplayWeather } from "./components/WeatherComponents/DisplayWeather";
+import DisplayForecastWeather from "./components/ForecastWeatherComponents/DisplayForecastWeather";
+import { WeatherNavBar } from "./components/WeatherNavbarComponents/WeatherNavBar";
+import { WeatherGraphs } from "./components/WeatherGraphsComponents/WeatherGraphs";
+import { useState, useEffect } from "react";
 import { TemperatureProvider } from "./components/TemperatureContext";
 
+const LoadingScreen = () => (
+  <div
+    style={{
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      height: "100vh",
+    }}
+  >
+    Loading...
+  </div>
+);
 function App() {
   const [background, setBackground] = useState<string>("");
   const [selectedCity, setSelectedCity] = useState<string>("");
+  const [isLoading, setIsLoading] = useState(true);
 
   const handleCitySelect = (city: string) => {
     setSelectedCity(city);
   };
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 2000);
+    console.log(
+      import.meta.env.VITE_RAPIDAPI_KEY,
+      import.meta.env.VITE_RAPIDAPI_HOST
+    );
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (isLoading) {
+    return <LoadingScreen />;
+  }
 
   return (
     <TemperatureProvider>

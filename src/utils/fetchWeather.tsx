@@ -1,18 +1,26 @@
 import axios from "axios";
 
+const weatherCache = new Map();
+
 const fetchCurrentWeather = async (query: string) => {
+  const cacheKey = `current-${query}`;
+  if (weatherCache.has(cacheKey)) {
+    return weatherCache.get(cacheKey);
+  }
+
   const options = {
     method: "GET",
-    url: "https://weatherapi-com.p.rapidapi.com/forecast.json",
+    url: `https://${import.meta.env.VITE_RAPIDAPI_HOST}/forecast.json`,
     params: { q: query },
     headers: {
-      "X-RapidAPI-Key": "b12886698dmsh2a39c211cc8b4aep12a465jsn115794388fb5",
-      "X-RapidAPI-Host": "weatherapi-com.p.rapidapi.com",
+      "X-RapidAPI-Key": import.meta.env.VITE_RAPIDAPI_KEY,
+      "X-RapidAPI-Host": import.meta.env.VITE_RAPIDAPI_HOST,
     },
   };
 
   try {
     const response = await axios.request(options);
+    weatherCache.set(cacheKey, response.data);
     return response.data;
   } catch (error) {
     console.error(error);
@@ -20,20 +28,25 @@ const fetchCurrentWeather = async (query: string) => {
 };
 
 const fetchForecastWeather = async (query: string, days: number = 3) => {
+  const cacheKey = `forecast-${query}-${days}`;
+  if (weatherCache.has(cacheKey)) {
+    return weatherCache.get(cacheKey);
+  }
   const options = {
     method: "GET",
-    url: "https://weatherapi-com.p.rapidapi.com/forecast.json",
+    url: `https://${import.meta.env.VITE_RAPIDAPI_HOST}/forecast.json`,
     params: {
       q: query,
       days: days,
     },
     headers: {
-      "X-RapidAPI-Key": "b12886698dmsh2a39c211cc8b4aep12a465jsn115794388fb5",
-      "X-RapidAPI-Host": "weatherapi-com.p.rapidapi.com",
+      "X-RapidAPI-Key": import.meta.env.VITE_RAPIDAPI_KEY,
+      "X-RapidAPI-Host": import.meta.env.VITE_RAPIDAPI_HOST,
     },
   };
   try {
     const response = await axios.request(options);
+    weatherCache.set(cacheKey, response.data);
     return response.data;
   } catch (error) {
     console.error(error);
@@ -45,11 +58,11 @@ const fetchCitySuggestions = async (query: string): Promise<any[]> => {
   try {
     const options = {
       method: "GET",
-      url: "https://weatherapi-com.p.rapidapi.com/search.json",
+      url: `https://${import.meta.env.VITE_RAPIDAPI_HOST}//search.json`,
       params: { q: query },
       headers: {
-        "X-RapidAPI-Key": "b12886698dmsh2a39c211cc8b4aep12a465jsn115794388fb5",
-        "X-RapidAPI-Host": "weatherapi-com.p.rapidapi.com",
+        "X-RapidAPI-Key": import.meta.env.VITE_RAPIDAPI_KEY,
+        "X-RapidAPI-Host": import.meta.env.VITE_RAPIDAPI_HOST,
       },
     };
 
