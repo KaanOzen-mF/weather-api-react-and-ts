@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { fetchForecastWeather } from "../../utils/fetchWeather";
 import { useTemperature } from "../TemperatureContext";
+import { convertTemperature } from "../../utils/convertTemperature";
 
 interface WeatherDataProps {
   forecast: {
@@ -52,7 +53,6 @@ export const ForecastWeather: React.FC<WeatherProps> = ({ selectedCity }) => {
     }
   }, [selectedCity]);
 
-  console.log(selectedCity);
   const formatDate = (dateString: string): string => {
     const options: Intl.DateTimeFormatOptions = {
       day: "2-digit",
@@ -60,11 +60,6 @@ export const ForecastWeather: React.FC<WeatherProps> = ({ selectedCity }) => {
       weekday: "short",
     };
     return new Date(dateString).toLocaleDateString("en-US", options);
-  };
-  const convertTemperature = (temp: number) => {
-    return isCelsius
-      ? `${temp.toFixed()}°C`
-      : `${((temp * 9) / 5 + 32).toFixed()}°F`;
   };
 
   return (
@@ -82,10 +77,10 @@ export const ForecastWeather: React.FC<WeatherProps> = ({ selectedCity }) => {
               alt=""
             />
             <p className="forecastWeatherMaxTemp">
-              {convertTemperature(i.day.maxtemp_c)}
+              {convertTemperature(i.day.maxtemp_c, isCelsius)}
             </p>
             <p className="forecastWeatherMinTemp">
-              /{convertTemperature(i.day.mintemp_c)}
+              /{convertTemperature(i.day.mintemp_c, isCelsius)}
             </p>
           </div>
           <p className="forecastWeatherDate">{formatDate(i.date)}</p>

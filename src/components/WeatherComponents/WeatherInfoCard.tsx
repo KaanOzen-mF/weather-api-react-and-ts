@@ -5,6 +5,7 @@ import "swiper/css";
 import "swiper/css/pagination";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination } from "swiper/modules";
+import { convertTemperature } from "../../utils/convertTemperature";
 
 interface WeatherDataProps {
   location: {
@@ -67,12 +68,6 @@ export const WeatherInfoCard: React.FC<WeatherProps> = ({ selectedCity }) => {
     }
   }, [selectedCity]);
 
-  const convertTemperature = (temp: number) => {
-    return isCelsius
-      ? `${temp.toFixed()}°C`
-      : `${((temp * 9) / 5 + 32).toFixed()}°F`;
-  };
-
   return (
     <Swiper
       slidesPerView={7}
@@ -120,7 +115,9 @@ export const WeatherInfoCard: React.FC<WeatherProps> = ({ selectedCity }) => {
               {i.time.split(" ")[1].split(":")[0]} am
             </p>
             <img src={i.condition.icon} alt="" className="weatherCardImg" />
-            <p className="weatherCardText">{convertTemperature(i.temp_c)}</p>
+            <p className="weatherCardText">
+              {convertTemperature(i.temp_c, isCelsius)}
+            </p>
           </div>
         </SwiperSlide>
       ))}

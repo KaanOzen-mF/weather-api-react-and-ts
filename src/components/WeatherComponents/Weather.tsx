@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { fetchCurrentWeather } from "../../utils/fetchWeather";
 import { useTemperature } from "../TemperatureContext";
+import { convertTemperature } from "../../utils/convertTemperature";
 
 interface WeatherDataProps {
   location: {
@@ -71,12 +72,6 @@ export const Weather: React.FC<WeatherProps> = ({
     }
   }, [selectedCity, setBackground]);
 
-  const convertTemperature = (temp: number) => {
-    return isCelsius
-      ? `${temp.toFixed()}°C`
-      : `${((temp * 9) / 5 + 32).toFixed()}°F`;
-  };
-
   const updateBackground = (
     weather: string,
     setBackground: (background: string) => void
@@ -121,7 +116,7 @@ export const Weather: React.FC<WeatherProps> = ({
           </div>
           <div className="weatherInfoCard">
             <p className="weatherInfoTitle">
-              {convertTemperature(weatherData.current.temp_c)}
+              {convertTemperature(weatherData.current.temp_c, isCelsius)}
             </p>
             <p className="weatherInfoSubTitle">Temperature</p>
           </div>
