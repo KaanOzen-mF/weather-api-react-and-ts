@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-import { fetchCurrentWeather } from "../utils/fetchWeather";
-import { useTemperature } from "./TemperatureContext";
-import { FaX } from "react-icons/fa6";
+import { fetchCurrentWeather } from "../../utils/fetchWeather";
 import "swiper/css";
 import "swiper/css/pagination";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination } from "swiper/modules";
-import { FaPlus } from "react-icons/fa";
+import Modal from "../Modal";
+import CityCard from "./CityCard";
+import AddCityCard from "./AddCityCard";
 
 type CityWeather = {
   name: string;
@@ -25,84 +25,7 @@ type CityWeather = {
   };
 };
 
-type ModalProps = {
-  show: boolean;
-  onClose: () => void;
-  children: React.ReactNode;
-  onAddCity?: () => void;
-};
-
-const Modal: React.FC<ModalProps> = ({
-  show,
-  onClose,
-  children,
-  onAddCity,
-}) => {
-  if (!show) {
-    return null;
-  }
-
-  return (
-    <div className="modalBackdrop">
-      <div className="modalContent">
-        {children}
-        <div className="modalButtonContainer">
-          {onAddCity && (
-            <button className="modalAddCityBtn" onClick={onAddCity}>
-              <FaPlus />
-            </button>
-          )}
-          <button className="modalCloseBtn" onClick={onClose}>
-            <FaX />
-          </button>
-        </div>
-      </div>
-    </div>
-  );
-};
-
-const CityCard: React.FC<{
-  cityWeather: CityWeather;
-  onRemove: () => void;
-}> = ({ cityWeather, onRemove }) => {
-  const { isCelsius } = useTemperature();
-
-  const maxTemp = isCelsius
-    ? cityWeather.forecast.forecastday[0].day.maxtemp_c
-    : (cityWeather.forecast.forecastday[0].day.maxtemp_c * 9) / 5 + 32;
-  const minTemp = isCelsius
-    ? cityWeather.forecast.forecastday[0].day.mintemp_c
-    : (cityWeather.forecast.forecastday[0].day.mintemp_c * 9) / 5 + 32;
-
-  return (
-    <div className="city-card">
-      <p className="cityWeatherName">{cityWeather.name}</p>
-      <p className="cityWeatherDegree">
-        {maxTemp.toFixed()}°{isCelsius ? "C" : "F"} / {minTemp.toFixed()}°
-        {isCelsius ? "C" : "F"}
-      </p>
-      <img
-        src={cityWeather.forecast.forecastday[0].day.condition.icon}
-        alt="Weather Icon"
-        className="cityWeatherIconImg"
-      />
-      <FaX onClick={onRemove} className="removeBtn" />
-    </div>
-  );
-};
-
-const AddCityCard: React.FC<{ onAddClick: () => void }> = ({ onAddClick }) => {
-  return (
-    <div className="add-city-card" onClick={onAddClick}>
-      <div className="add-city-content">
-        <span className="plus-icon">+</span>
-        <span>Add City</span>
-      </div>
-    </div>
-  );
-};
-
-const WeatherForecast: React.FC = () => {
+const CityWeather: React.FC = () => {
   const [cities, setCities] = useState<CityWeather[]>(() => {
     const savedCities = localStorage.getItem("cities");
     return savedCities ? JSON.parse(savedCities) : [];
@@ -207,4 +130,4 @@ const WeatherForecast: React.FC = () => {
   );
 };
 
-export default WeatherForecast;
+export default CityWeather;

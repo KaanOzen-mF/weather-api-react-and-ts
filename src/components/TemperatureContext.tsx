@@ -25,7 +25,7 @@ interface TemperatureProviderProps {
 export const TemperatureProvider: React.FC<TemperatureProviderProps> = ({
   children,
 }) => {
-  const [isCelsius, setIsCelsius] = useState(true); // Başlangıç değeri Fahrenheit olarak ayarlandı.
+  const [isCelsius, setIsCelsius] = useState(true);
 
   const toggleTemperature = () => {
     setIsCelsius(!isCelsius);

@@ -1,4 +1,4 @@
-import { useTemperature } from "./TemperatureContext";
+import { useTemperature } from "../TemperatureContext";
 
 export default function TemperatureSwitch() {
   const { isCelsius, toggleTemperature } = useTemperature();

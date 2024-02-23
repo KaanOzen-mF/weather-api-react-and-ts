@@ -1,5 +1,5 @@
 import { ForecastWeather } from "./ForecastWeather";
-import { ForecastWeatherWrapper } from "./styles.module";
+import { ForecastWeatherWrapper } from "../styles.module";
 
 interface DisplayForecastWeatherProps {
   selectedCity: string;

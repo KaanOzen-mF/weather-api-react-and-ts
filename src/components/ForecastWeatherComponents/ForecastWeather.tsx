@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import { fetchForecastWeather } from "../utils/fetchWeather";
-import { useTemperature } from "./TemperatureContext";
+import { fetchForecastWeather } from "../../utils/fetchWeather";
+import { useTemperature } from "../TemperatureContext";
 
 interface WeatherDataProps {
   forecast: {

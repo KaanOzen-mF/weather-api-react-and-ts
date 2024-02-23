@@ -1,5 +1,5 @@
 import SearchBar from "./SearchBar";
-import { NavbarWrapper } from "./styles.module";
+import { NavbarWrapper } from "../styles.module";
 import TemperatureSwitch from "./TemperatureSwitch";
 
 interface WeatherNavBarProps {

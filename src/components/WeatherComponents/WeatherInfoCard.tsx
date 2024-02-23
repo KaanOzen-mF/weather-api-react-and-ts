@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import { fetchCurrentWeather } from "../utils/fetchWeather";
-import { useTemperature } from "./TemperatureContext";
+import { fetchCurrentWeather } from "../../utils/fetchWeather";
+import { useTemperature } from "../TemperatureContext";
 import "swiper/css";
 import "swiper/css/pagination";
 import { Swiper, SwiperSlide } from "swiper/react";

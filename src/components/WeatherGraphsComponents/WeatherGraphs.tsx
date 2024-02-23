@@ -7,9 +7,9 @@ import {
   Tooltip,
   ResponsiveContainer,
 } from "recharts";
-import { WeatherGraphsWrapper } from "./styles.module";
+import { WeatherGraphsWrapper } from "../styles.module";
 import { useState, useEffect } from "react";
-import { fetchCurrentWeather } from "../utils/fetchWeather";
+import { fetchCurrentWeather } from "../../utils/fetchWeather";
 
 interface WeatherDataProps {
   location: {
@@ -42,9 +42,9 @@ interface WeatherDataProps {
 }
 interface ChartData {
   time: string;
-  humidity: number;
-  precip_mm: number;
-  uv: number;
+  Humidity: number;
+  Precipitation: number;
+  Uv: number;
 }
 
 interface WeatherGraphsProps {
@@ -57,8 +57,8 @@ export const WeatherGraphs: React.FC<WeatherGraphsProps> = ({
   const [weatherData, setWeatherData] = useState<WeatherDataProps | null>(null);
   const [chartData, setChartData] = useState<ChartData[]>([]);
   const [activeDataKey, setActiveDataKey] = useState<
-    "humidity" | "precip_mm" | "uv"
-  >("humidity");
+    "Humidity" | "Precipitation" | "Uv"
+  >("Humidity");
 
   useEffect(() => {
     const fetchWeatherData = async () => {
@@ -96,9 +96,9 @@ export const WeatherGraphs: React.FC<WeatherGraphsProps> = ({
       const transformedData = weatherData.forecast.forecastday[0].hour.map(
         (hour) => ({
           time: hour.time.split(" ")[1],
-          humidity: hour.humidity,
-          precip_mm: hour.precip_mm,
-          uv: hour.uv,
+          Humidity: hour.humidity,
+          Precipitation: hour.precip_mm,
+          Uv: hour.uv,
         })
       );
 
@@ -106,7 +106,7 @@ export const WeatherGraphs: React.FC<WeatherGraphsProps> = ({
     }
   }, [weatherData]);
 
-  const getButtonClass = (key: "humidity" | "precip_mm" | "uv") => {
+  const getButtonClass = (key: "Humidity" | "Precipitation" | "Uv") => {
     return `weatherGraphsButton ${activeDataKey === key ? "active" : ""}`;
   };
 
@@ -118,20 +118,20 @@ export const WeatherGraphs: React.FC<WeatherGraphsProps> = ({
         </div>
         <div className="weatherGrapsButtonContainer">
           <button
-            className={getButtonClass("humidity")}
-            onClick={() => setActiveDataKey("humidity")}
+            className={getButtonClass("Humidity")}
+            onClick={() => setActiveDataKey("Humidity")}
           >
             Humidity
           </button>
           <button
-            className={getButtonClass("precip_mm")}
-            onClick={() => setActiveDataKey("precip_mm")}
+            className={getButtonClass("Precipitation")}
+            onClick={() => setActiveDataKey("Precipitation")}
           >
             Precipitation
           </button>
           <button
-            className={getButtonClass("uv")}
-            onClick={() => setActiveDataKey("uv")}
+            className={getButtonClass("Uv")}
+            onClick={() => setActiveDataKey("Uv")}
           >
             UV
           </button>

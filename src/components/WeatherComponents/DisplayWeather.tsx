@@ -1,4 +1,4 @@
-import { WeatherWrapper } from "./styles.module";
+import { WeatherWrapper } from "../styles.module";
 import { Weather } from "./Weather";
 import WeatherDate from "./WeatherDate";
 import { WeatherInfoCard } from "./WeatherInfoCard";
