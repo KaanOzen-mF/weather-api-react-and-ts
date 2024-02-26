@@ -1309,13 +1309,13 @@
 
   .weatherGrapsTitleContainer {
     font-size: 32px;
-    width: 40%;
+    width: 20%;
   }
 
   .weatherGrapsButtonContainer {
     background-color: #626060;
     border-radius: 20px;
-    width: 30%;
+    width: 50%;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
