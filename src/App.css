@@ -11,8 +11,8 @@
 }
 
 .mainPage {
-  background: url("/public/static/images/daoudi-aissa-Pe1Ol9oLc4o-unsplash.jpg")
-    no-repeat center center fixed;
+  background: url("/public/daoudi-aissa-Pe1Ol9oLc4o-unsplash.jpg") no-repeat
+    center center fixed;
   background-size: cover;
   display: flex;
   flex-direction: column;

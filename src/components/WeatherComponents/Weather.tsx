@@ -79,22 +79,22 @@ export const Weather: React.FC<WeatherProps> = ({
     let background: string;
     switch (weather) {
       case "Partly cloudy":
-        background = "/public/static/partlycloudly.jpg";
+        background = "/static/partlycloudly.jpg";
         break;
       case "Sunny":
-        background = "/public/static/sunny.jpg";
+        background = "/static/sunny.jpg";
         break;
       case "Fog":
-        background = "/public/static/mist.jpg";
+        background = "/static/mist.jpg";
         break;
       case "Overcast":
-        background = "/public/static/overcast.jpg";
+        background = "/static/overcast.jpg";
         break;
       case "Clean":
-        background = "/public/static/clean.jpg";
+        background = "/static/clean.jpg";
         break;
       default:
-        background = "/public/static/rainy.jpg";
+        background = "/static/rainy.jpg";
     }
     setBackground(background);
   };
