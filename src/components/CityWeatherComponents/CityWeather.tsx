@@ -77,7 +77,6 @@ const CityWeather: React.FC = () => {
         </div>
       </Modal>
       <Swiper
-        slidesPerView={5}
         grabCursor={true}
         pagination={{
           clickable: true,
@@ -109,6 +108,9 @@ const CityWeather: React.FC = () => {
             spaceBetween: 10,
           },
           1200: {
+            slidesPerView: 3,
+          },
+          2000: {
             slidesPerView: 5,
           },
         }}
