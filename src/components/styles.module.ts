@@ -95,6 +95,7 @@ export const WeatherGraphsWrapper = styled.div`
   backdrop-filter: blur(6.900000095367432px);
   margin-left: 5%;
   margin-top: 32px;
+  margin-bottom: 12px;
   box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
   -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
   -moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
@@ -105,10 +106,6 @@ export const WeatherGraphsWrapper = styled.div`
     margin-right: 4%;
   }
   @media only screen and (min-width: 768px) and (max-width: 1024px) {
-    margin-right: 4%;
-  }
-
-  @media only screen and (min-width: 1200px) and (max-width: 2000px) {
     margin-right: 4%;
   }
 `;
