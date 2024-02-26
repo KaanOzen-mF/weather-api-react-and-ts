@@ -58,7 +58,7 @@ const fetchCitySuggestions = async (query: string): Promise<any[]> => {
   try {
     const options = {
       method: "GET",
-      url: `https://${import.meta.env.VITE_RAPIDAPI_HOST}//search.json`,
+      url: `https://${import.meta.env.VITE_RAPIDAPI_HOST}/search.json`,
       params: { q: query },
       headers: {
         "X-RapidAPI-Key": import.meta.env.VITE_RAPIDAPI_KEY,
