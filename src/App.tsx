@@ -32,10 +32,7 @@ function App() {
     const timer = setTimeout(() => {
       setIsLoading(false);
     }, 2000);
-    console.log(
-      import.meta.env.VITE_RAPIDAPI_KEY,
-      import.meta.env.VITE_RAPIDAPI_HOST
-    );
+
     return () => clearTimeout(timer);
   }, []);
 

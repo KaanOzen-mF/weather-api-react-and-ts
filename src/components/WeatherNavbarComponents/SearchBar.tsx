@@ -28,8 +28,6 @@ const SearchBar: React.FC<{ onCitySelect: (city: string) => void }> = ({
     onCitySelect(name);
   };
 
-  console.log(suggestions);
-
   return (
     <>
       <SearchBarWrapper>

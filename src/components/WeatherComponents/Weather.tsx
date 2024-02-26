@@ -97,6 +97,8 @@ export const Weather: React.FC<WeatherProps> = ({
         background = "/public/static/images/rainy.jpg";
     }
     setBackground(background);
+
+    console.log(background);
   };
 
   return (
