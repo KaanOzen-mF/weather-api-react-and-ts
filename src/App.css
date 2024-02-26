@@ -1315,15 +1315,15 @@
   .weatherGrapsButtonContainer {
     background-color: #626060;
     border-radius: 20px;
-    width: 45%;
+    width: 30%;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
   }
 
   .weatherGraphsButton {
-    font-size: 18px;
-    padding: 4px 4px;
+    font-size: 24px;
+    padding: 8px 4px;
   }
 
   .forecastTitleContainer {
