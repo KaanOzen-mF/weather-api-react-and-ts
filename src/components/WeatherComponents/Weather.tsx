@@ -1,8 +1,19 @@
 import { useEffect, useState } from "react";
-import { fetchCurrentWeather } from "../../utils/fetchWeather";
+
 import { useTemperature } from "../TemperatureContext";
+
+import { fetchCurrentWeather } from "../../utils/fetchWeather";
 import { convertTemperature } from "../../utils/convertTemperature";
 
+import {
+  WeatherInfoCard,
+  WeatherInfoContainer,
+  WeatherInfoImg,
+  WeatherInfoSubTitle,
+  WeatherInfoTitle,
+} from "../styles.module";
+
+// Define the structure of weather data received from the API
 interface WeatherDataProps {
   location: {
     name: string;
@@ -32,25 +43,27 @@ interface WeatherDataProps {
 }
 
 interface WeatherProps {
-  setBackground: (background: string) => void;
-  selectedCity: string;
+  setBackground: (background: string) => void; // Function to update the background based on weather condition
+  selectedCity: string; // Selected city for which the weather data is fetched
 }
 
 export const Weather: React.FC<WeatherProps> = ({
   setBackground,
   selectedCity,
 }) => {
-  const [weatherData, setWeatherData] = useState<WeatherDataProps | null>(null);
-  const { isCelsius } = useTemperature();
+  const [weatherData, setWeatherData] = useState<WeatherDataProps | null>(null); // State to store fetched weather data
+  const { isCelsius } = useTemperature(); // Use temperature context to check if the unit is Celsius
 
   useEffect(() => {
+    // Effect to fetch weather data based on selected city or current location
     if (selectedCity) {
       fetchCurrentWeather(selectedCity).then((currentWeather) => {
         setWeatherData(currentWeather);
-        const weatherCondition = currentWeather.current.condition.text;
-        updateBackground(weatherCondition, setBackground);
+        const weatherCondition = currentWeather.current.condition.text; // Extract the weather condition text
+        updateBackground(weatherCondition, setBackground); // Update the background based on weather condition
       });
     } else {
+      // If no city is selected, use geolocation to fetch weather data for current location
       navigator.geolocation.getCurrentPosition(
         (position) => {
           const { latitude, longitude } = position.coords;
@@ -70,14 +83,16 @@ export const Weather: React.FC<WeatherProps> = ({
         }
       );
     }
-  }, [selectedCity, setBackground]);
+  }, [selectedCity, setBackground]); // Rerun the effect when selectedCity or setBackground function changes
 
   const updateBackground = (
     weather: string,
     setBackground: (background: string) => void
   ) => {
+    // Function to update background based on weather condition
     let background: string;
     switch (weather) {
+      // Set background image based on the weather condition
       case "Partly cloudy":
         background = "/static/partlycloudly.jpg";
         break;
@@ -96,42 +111,39 @@ export const Weather: React.FC<WeatherProps> = ({
       default:
         background = "/static/rainy.jpg";
     }
-    setBackground(background);
+    setBackground(background); // Set the background state in the parent component
   };
 
   return (
-    <div className="weatherInfoContainer">
+    // Render weather information
+    <WeatherInfoContainer>
       {weatherData && (
         <>
-          <img
-            className="weatherInfoImg"
-            src={weatherData.current.condition.icon}
-            alt=""
-          />
-          <div className="weatherInfoCard">
-            <p className="weatherInfoTitle">{weatherData.location.name}</p>
-            <p className="weatherInfoSubTitle">
+          <WeatherInfoImg src={weatherData.current.condition.icon} alt="" />
+          <WeatherInfoCard>
+            <WeatherInfoTitle>{weatherData.location.name}</WeatherInfoTitle>
+            <WeatherInfoSubTitle>
               {weatherData.location.country}
-            </p>
-          </div>
-          <div className="weatherInfoCard">
-            <p className="weatherInfoTitle">
+            </WeatherInfoSubTitle>
+          </WeatherInfoCard>
+          <WeatherInfoCard>
+            <WeatherInfoTitle>
               {convertTemperature(weatherData.current.temp_c, isCelsius)}
-            </p>
-            <p className="weatherInfoSubTitle">Temperature</p>
-          </div>
-          <div className="weatherInfoCard">
-            <p className="weatherInfoTitle">{weatherData.current.humidity}%</p>
-            <p className="weatherInfoSubTitle">Humidity</p>
-          </div>
-          <div className="weatherInfoCard">
-            <p className="weatherInfoTitle">
+            </WeatherInfoTitle>
+            <WeatherInfoSubTitle>Temperature</WeatherInfoSubTitle>
+          </WeatherInfoCard>
+          <WeatherInfoCard>
+            <WeatherInfoTitle>{weatherData.current.humidity}%</WeatherInfoTitle>
+            <WeatherInfoSubTitle>Humidity</WeatherInfoSubTitle>
+          </WeatherInfoCard>
+          <WeatherInfoCard>
+            <WeatherInfoTitle>
               {weatherData.current.gust_kph}km/h
-            </p>
-            <p className="weatherInfoSubTitle">Wind Speed</p>
-          </div>
+            </WeatherInfoTitle>
+            <WeatherInfoSubTitle>Wind Speed</WeatherInfoSubTitle>
+          </WeatherInfoCard>
         </>
       )}
-    </div>
+    </WeatherInfoContainer>
   );
 };
