@@ -13,7 +13,9 @@ export const WeatherNavBar = ({ onCitySelect }: WeatherNavBarProps) => {
   // The returned JSX includes the NavbarWrapper styled component containing the SearchBar and TemperatureSwitch
   return (
     <NavbarWrapper>
+      {/* SearchBar component which is passed the onCitySelect function to lift the state up when a city is selected */}
       <SearchBar onCitySelect={onCitySelect} />
+      {/* TemperatureSwitch component which allows the user to switch between Celsius and Fahrenheit */}
       <TemperatureSwitch />
     </NavbarWrapper>
   );
