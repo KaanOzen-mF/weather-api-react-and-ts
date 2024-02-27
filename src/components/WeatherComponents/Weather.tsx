@@ -115,7 +115,6 @@ export const Weather: React.FC<WeatherProps> = ({
   };
 
   return (
-    // Render weather information
     <WeatherInfoContainer>
       {weatherData && (
         <>
