@@ -1,3 +1,4 @@
+// Importing necessary components and hooks
 import {
   LineChart,
   Line,
@@ -7,10 +8,17 @@ import {
   Tooltip,
   ResponsiveContainer,
 } from "recharts";
-import { WeatherGraphsWrapper } from "../styles.module";
+import {
+  ButtonContainer,
+  GraphButton,
+  TitleBtnContainer,
+  TitleContainer,
+  WeatherGraphsWrapper,
+} from "../styles.module";
 import { useState, useEffect } from "react";
 import { fetchCurrentWeather } from "../../utils/fetchWeather";
 
+// Interfaces for type definitions
 interface WeatherDataProps {
   location: {
     name: string;
@@ -40,6 +48,7 @@ interface WeatherDataProps {
     ];
   };
 }
+
 interface ChartData {
   time: string;
   Humidity: number;
@@ -51,15 +60,18 @@ interface WeatherGraphsProps {
   selectedCity?: string;
 }
 
+// WeatherGraphs component to display weather data charts
 export const WeatherGraphs: React.FC<WeatherGraphsProps> = ({
   selectedCity,
 }) => {
+  // State hooks for weather data and chart data
   const [weatherData, setWeatherData] = useState<WeatherDataProps | null>(null);
   const [chartData, setChartData] = useState<ChartData[]>([]);
   const [activeDataKey, setActiveDataKey] = useState<
     "Humidity" | "Precipitation" | "Uv"
   >("Humidity");
 
+  // Effect hook to fetch weather data based on the selected city or current location
   useEffect(() => {
     const fetchWeatherData = async () => {
       let data;
@@ -91,6 +103,7 @@ export const WeatherGraphs: React.FC<WeatherGraphsProps> = ({
     fetchWeatherData();
   }, [selectedCity]);
 
+  // Effect hook to transform weather data into chart data format
   useEffect(() => {
     if (weatherData) {
       const transformedData = weatherData.forecast.forecastday[0].hour.map(
@@ -106,37 +119,34 @@ export const WeatherGraphs: React.FC<WeatherGraphsProps> = ({
     }
   }, [weatherData]);
 
-  const getButtonClass = (key: "Humidity" | "Precipitation" | "Uv") => {
-    return `weatherGraphsButton ${activeDataKey === key ? "active" : ""}`;
-  };
-
   return (
+    // Rendering the chart with buttons to switch between data types
     <WeatherGraphsWrapper>
-      <div className="weatherGraphsTitleBtnContainer">
-        <div className="weatherGrapsTitleContainer">
+      <TitleBtnContainer>
+        <TitleContainer>
           <p>Overview</p>
-        </div>
-        <div className="weatherGrapsButtonContainer">
-          <button
-            className={getButtonClass("Humidity")}
+        </TitleContainer>
+        <ButtonContainer>
+          <GraphButton
+            isActive={activeDataKey === "Humidity"}
             onClick={() => setActiveDataKey("Humidity")}
           >
             Humidity
-          </button>
-          <button
-            className={getButtonClass("Precipitation")}
+          </GraphButton>
+          <GraphButton
+            isActive={activeDataKey === "Precipitation"}
             onClick={() => setActiveDataKey("Precipitation")}
           >
             Precipitation
-          </button>
-          <button
-            className={getButtonClass("Uv")}
+          </GraphButton>
+          <GraphButton
+            isActive={activeDataKey === "Uv"}
             onClick={() => setActiveDataKey("Uv")}
           >
             UV
-          </button>
-        </div>
-      </div>
+          </GraphButton>
+        </ButtonContainer>
+      </TitleBtnContainer>
       <ResponsiveContainer height={350}>
         <LineChart
           data={chartData}
