@@ -1269,6 +1269,43 @@
 }
 
 @media only screen and (min-width: 1200px) and (max-width: 2000px) {
+  .searchIcon {
+    margin-left: 6px;
+    font-size: 16px;
+  }
+
+  .searchBar {
+    height: 18px;
+    margin-left: 12px;
+    width: 142px;
+    font-size: 16px;
+  }
+
+  .suggestionBox {
+    top: 100%;
+    width: 172px;
+    font-size: 16px;
+  }
+
+  .switch-container {
+    width: 58px;
+    height: 32px;
+    font-size: 16px;
+  }
+
+  .switch-circle {
+    width: 32px;
+    height: 30px;
+  }
+
+  .celsius-active .switch-circle {
+    transform: translateX(0);
+  }
+
+  .fahrenheit-active .switch-circle {
+    transform: translateX(25px);
+  }
+
   .dateText {
     font-size: 32px;
   }
