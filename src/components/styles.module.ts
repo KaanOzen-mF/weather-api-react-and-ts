@@ -7,6 +7,7 @@ const media = {
   desktop: `(min-width: 1200px) and (max-width: 2000px)`,
 };
 
+/*Weather Navbar Components Start */
 export const SearchBarWrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -127,6 +128,123 @@ export const Suggestions = styled.div`
     color: white;
   }
 `;
+
+export const SwitchContainer = styled.div`
+  width: 96px;
+  height: 64px;
+  margin-left: 96px;
+  margin-right: 12px;
+  backdrop-filter: blur(10px) saturate(130%);
+  background: rgba(140, 210, 206, 0.47);
+  border-radius: 30px;
+  position: relative;
+  cursor: pointer;
+  user-select: none;
+  box-shadow: -1px 0px 5px 0px rgba(0, 0, 0, 0.75) inset;
+  font-size: 24px;
+
+  @media ${media.mobile} {
+    width: 58px;
+    height: 32px;
+    font-size: 16px;
+  }
+  @media ${media.tablet} {
+    width: 58px;
+    height: 32px;
+    font-size: 16px;
+  }
+  @media ${media.laptop} {
+    width: 58px;
+    height: 32px;
+    font-size: 16px;
+  }
+  @media ${media.desktop} {
+    width: 72px;
+    height: 48px;
+    font-size: 16px;
+  }
+`;
+
+export const Switch = styled.div<{ isActive: boolean }>`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+  position: relative;
+  transition: background-color 0.3s ease;
+  color: #fff;
+  .switch-circle {
+    width: 48px;
+    height: 60px;
+    backdrop-filter: blur(10px) saturate(130%);
+    background-color: #b8b7b7;
+    border-radius: 50%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: transform 0.3s ease;
+    transform: ${({ isActive }) =>
+      isActive ? "translateX(0)" : "translateX(50px)"};
+    box-shadow: 1px 0px 5px 0px rgba(0, 0, 0, 0.75);
+  }
+`;
+
+export const TemperatureLabel = styled.span<{ isActive: boolean }>`
+  width: 50%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  transition: color 0.3s ease;
+  color: ${({ isActive }) => (isActive ? "#fff" : "initial")};
+  font-size: 24px;
+  @media ${media.mobile} {
+    font-size: 16px;
+  }
+`;
+
+export const SwitchCircle = styled.div<{ isCelsius: boolean }>`
+  width: 48px;
+  height: 60px;
+  backdrop-filter: blur(10px) saturate(130%);
+  background-color: #b8b7b7;
+  border-radius: 50%;
+  position: absolute;
+  top: 2px;
+  left: 0;
+  transform: ${({ isCelsius }) =>
+    isCelsius ? "translateX(0)" : "translateX(50px)"};
+  transition: left 0.8s ease;
+  box-shadow: 1px 0px 5px 0px rgba(0, 0, 0, 0.75);
+
+  @media ${media.mobile} {
+    top: 0;
+    transform: ${({ isCelsius }) =>
+      isCelsius ? "translateX(0)" : "translateX(25px)"};
+    width: 32px;
+    height: 30px;
+  }
+  @media ${media.tablet} {
+    transform: ${({ isCelsius }) =>
+      isCelsius ? "translateX(0)" : "translateX(25px)"};
+    width: 32px;
+    height: 30px;
+  }
+  @media ${media.laptop} {
+    transform: ${({ isCelsius }) =>
+      isCelsius ? "translateX(0)" : "translateX(25px)"};
+    width: 32px;
+    height: 30px;
+  }
+  @media ${media.desktop} {
+    transform: ${({ isCelsius }) =>
+      isCelsius ? "translateX(0)" : "translateX(30px)"};
+    width: 42px;
+    height: 46px;
+  }
+`;
+/*Weather Navbar Components End */
 
 export const WeatherWrapper = styled.div`
   display: flex;
