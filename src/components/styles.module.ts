@@ -8,6 +8,33 @@ const media = {
 };
 
 /*Weather Navbar Components Start */
+export const NavbarWrapper = styled.div`
+  display: flex;
+  justify-content: end;
+  margin-top: 12px;
+  margin-right: 42px;
+
+  @media only screen and (max-width: 600px) {
+    justify-content: space-between;
+    margin-right: 0;
+    margin-left: 5%;
+  }
+  @media only screen and (min-width: 600px) and (max-width: 768px) {
+    justify-content: space-between;
+    margin-right: 3%;
+    margin-left: 5%;
+  }
+
+  @media only screen and (min-width: 768px) and (max-width: 1024px) {
+    justify-content: space-between;
+    margin-right: 3%;
+    margin-left: 5%;
+  }
+  @media only screen and (min-width: 1024px) and (max-width: 1200px) {
+    margin-right: 2%;
+  }
+`;
+
 export const SearchBarWrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -258,6 +285,30 @@ export const SwitchCircle = styled.div<{ isCelsius: boolean }>`
 /*Weather Navbar Components End */
 
 /*Weather Graph Components Start */
+export const WeatherGraphsWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  border-radius: 12px;
+  border: 1px solid rgba(98, 96, 96, 0.1);
+  background: rgba(98, 96, 96, 0.47);
+  backdrop-filter: blur(6.900000095367432px);
+  margin-left: 5%;
+  margin-top: 32px;
+  margin-bottom: 12px;
+  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
+  @media only screen and (max-width: 600px) {
+    margin-right: 4%;
+  }
+  @media only screen and (min-width: 600px) and (max-width: 768px) {
+    margin-right: 4%;
+  }
+  @media only screen and (min-width: 768px) and (max-width: 1024px) {
+    margin-right: 4%;
+  }
+`;
+
 export const TitleBtnContainer = styled.div`
   display: flex;
   justify-content: space-between;
@@ -351,6 +402,7 @@ export const GraphButton = styled.button<{ isActive: boolean }>`
 `;
 /*Weather Graph Components End */
 
+/*Weather Components Start */
 export const WeatherWrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -375,32 +427,31 @@ export const WeatherWrapper = styled.div`
   }
 `;
 
-export const NavbarWrapper = styled.div`
-  display: flex;
-  justify-content: end;
-  margin-top: 12px;
-  margin-right: 42px;
+export const DateContainer = styled.div`
+  margin-left: 5%;
+`;
 
-  @media only screen and (max-width: 600px) {
-    justify-content: space-between;
-    margin-right: 0;
-    margin-left: 5%;
+export const DateText = styled.p`
+  font-size: 42px;
+  font-weight: 500;
+  margin-bottom: 3%;
+  color: white;
+  margin-top: 3%;
+  @media ${media.mobile} {
+    font-size: 16px;
   }
-  @media only screen and (min-width: 600px) and (max-width: 768px) {
-    justify-content: space-between;
-    margin-right: 3%;
-    margin-left: 5%;
+  @media ${media.tablet} {
+    font-size: 16px;
   }
-
-  @media only screen and (min-width: 768px) and (max-width: 1024px) {
-    justify-content: space-between;
-    margin-right: 3%;
-    margin-left: 5%;
+  @media ${media.laptop} {
+    font-size: 16px;
   }
-  @media only screen and (min-width: 1024px) and (max-width: 1200px) {
-    margin-right: 2%;
+  @media ${media.desktop} {
+    font-size: 32px;
   }
 `;
+
+/*Weather Components End */
 
 export const CityWeatherWrapper = styled.div`
   margin-right: 5%;
@@ -419,28 +470,4 @@ export const ForecastWeatherWrapper = styled.div`
   box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
   -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
   -moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
-`;
-
-export const WeatherGraphsWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  border-radius: 12px;
-  border: 1px solid rgba(98, 96, 96, 0.1);
-  background: rgba(98, 96, 96, 0.47);
-  backdrop-filter: blur(6.900000095367432px);
-  margin-left: 5%;
-  margin-top: 32px;
-  margin-bottom: 12px;
-  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
-  -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
-  -moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
-  @media only screen and (max-width: 600px) {
-    margin-right: 4%;
-  }
-  @media only screen and (min-width: 600px) and (max-width: 768px) {
-    margin-right: 4%;
-  }
-  @media only screen and (min-width: 768px) and (max-width: 1024px) {
-    margin-right: 4%;
-  }
 `;
