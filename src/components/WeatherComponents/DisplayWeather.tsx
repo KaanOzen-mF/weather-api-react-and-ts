@@ -19,7 +19,7 @@ export const DisplayWeather: React.FC<DisplayWeatherProps> = ({
       {/* Component to display the current date */}
       <WeatherDate />
       {/* Weather component that displays current weather data and updates the background */}
-      <Weather setBackground={setBackground} selectedCity={selectedCity} /> //
+      <Weather setBackground={setBackground} selectedCity={selectedCity} />
       {/* Component to display detailed weather information for the selected city */}
       <WeatherInfoCard selectedCity={selectedCity} />
     </WeatherWrapper>
