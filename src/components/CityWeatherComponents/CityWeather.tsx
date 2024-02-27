@@ -108,7 +108,7 @@ const CityWeather: React.FC = () => {
             spaceBetween: 10,
           },
           1200: {
-            slidesPerView: 3,
+            slidesPerView: 4,
           },
           2000: {
             slidesPerView: 5,
