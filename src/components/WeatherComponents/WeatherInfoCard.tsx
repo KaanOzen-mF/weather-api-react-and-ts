@@ -103,7 +103,7 @@ export const WeatherInfoCard: React.FC<WeatherProps> = ({ selectedCity }) => {
           spaceBetween: 30,
         },
         1200: {
-          slidesPerView: 4,
+          slidesPerView: 5,
         },
         2000: {
           slidesPerView: 8,
