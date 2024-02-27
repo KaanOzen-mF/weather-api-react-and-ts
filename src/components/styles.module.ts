@@ -202,6 +202,15 @@ export const TemperatureLabel = styled.span<{ isActive: boolean }>`
   @media ${media.mobile} {
     font-size: 16px;
   }
+  @media ${media.tablet} {
+    font-size: 16px;
+  }
+  @media ${media.laptop} {
+    font-size: 16px;
+  }
+  @media ${media.desktop} {
+    font-size: 20px;
+  }
 `;
 
 export const SwitchCircle = styled.div<{ isCelsius: boolean }>`
