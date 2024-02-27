@@ -1277,25 +1277,25 @@
   .searchBar {
     height: 36px;
     margin-left: 12px;
-    width: 180px;
+    width: 360px;
     font-size: 24px;
   }
 
   .suggestionBox {
     top: 100%;
-    width: 200px;
+    width: 400px;
     font-size: 24px;
   }
 
   .switch-container {
-    width: 58px;
-    height: 32px;
+    width: 72px;
+    height: 48px;
     font-size: 16px;
   }
 
   .switch-circle {
-    width: 32px;
-    height: 30px;
+    width: 42px;
+    height: 46px;
   }
 
   .celsius-active .switch-circle {
@@ -1303,7 +1303,7 @@
   }
 
   .fahrenheit-active .switch-circle {
-    transform: translateX(25px);
+    transform: translateX(30px);
   }
 
   .dateText {
