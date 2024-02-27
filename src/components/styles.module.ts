@@ -235,12 +235,14 @@ export const SwitchCircle = styled.div<{ isCelsius: boolean }>`
     height: 30px;
   }
   @media ${media.tablet} {
+    top: 0;
     transform: ${({ isCelsius }) =>
       isCelsius ? "translateX(0)" : "translateX(25px)"};
     width: 32px;
     height: 30px;
   }
   @media ${media.laptop} {
+    top: 0;
     transform: ${({ isCelsius }) =>
       isCelsius ? "translateX(0)" : "translateX(25px)"};
     width: 32px;
@@ -254,6 +256,100 @@ export const SwitchCircle = styled.div<{ isCelsius: boolean }>`
   }
 `;
 /*Weather Navbar Components End */
+
+/*Weather Graph Components Start */
+export const TitleBtnContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+`;
+
+export const TitleContainer = styled.div`
+  font-size: 42px;
+  font-style: normal;
+  font-weight: 500;
+  padding: 5%;
+  color: white;
+
+  @media ${media.mobile} {
+    font-size: 16px;
+    width: 40%;
+  }
+  @media ${media.tablet} {
+    font-size: 16px;
+    width: 40%;
+  }
+  @media ${media.laptop} {
+    font-size: 16px;
+    width: 40%;
+  }
+  @media ${media.desktop} {
+    font-size: 32px;
+    width: 20%;
+  }
+`;
+
+export const ButtonContainer = styled.div`
+  background-color: #626060;
+  border-radius: 32px;
+  margin-right: 5%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 40%;
+  @media ${media.mobile} {
+    width: 50%;
+  }
+  @media ${media.tablet} {
+    width: 25%;
+  }
+  @media ${media.laptop} {
+    width: 35%;
+  }
+  @media ${media.desktop} {
+    width: 50%;
+  }
+`;
+
+export const GraphButton = styled.button<{ isActive: boolean }>`
+  background-color: transparent;
+  color: ${({ isActive }) =>
+    isActive ? "#fff" : "#ccc"}; // Active state color change
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 32px;
+  outline: none;
+  transition: background-color 0.3s, color 0.3s;
+  font-size: 28px;
+  font-weight: 300;
+
+  ${({ isActive }) =>
+    isActive &&
+    `
+    background-color: #8cd2ce;
+    color: #fff;
+    box-shadow: 1px 0px 5px 0px rgba(0, 0, 0, 0.4);
+  `}
+  @media ${media.mobile} {
+    font-size: 12px;
+    padding: 4px 4px;
+  }
+  @media ${media.tablet} {
+    font-size: 12px;
+    padding: 4px 4px;
+  }
+  @media ${media.laptop} {
+    font-size: 12px;
+    padding: 4px 4px;
+  }
+  @media ${media.desktop} {
+    font-size: 24px;
+    padding: 8px 4px;
+  }
+`;
+/*Weather Graph Components End */
 
 export const WeatherWrapper = styled.div`
   display: flex;
