@@ -451,6 +451,129 @@ export const DateText = styled.p`
   }
 `;
 
+export const WeatherInfoContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  text-align: center;
+  color: white;
+`;
+
+export const WeatherInfoImg = styled.img`
+  width: 112px;
+  @media ${media.mobile} {
+    width: 48px;
+  }
+  @media ${media.tablet} {
+    width: 48px;
+  }
+  @media ${media.laptop} {
+    width: 48px;
+  }
+  @media ${media.desktop} {
+    width: 56px;
+  }
+`;
+
+export const WeatherInfoCard = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`;
+
+export const WeatherInfoTitle = styled.p`
+  font-size: 36px;
+  font-weight: 500;
+  text-shadow: 1px 0px 2px rgba(0, 0, 0, 0.6);
+  @media ${media.mobile} {
+    font-size: 16px;
+  }
+  @media ${media.tablet} {
+    font-size: 16px;
+  }
+  @media ${media.laptop} {
+    font-size: 16px;
+  }
+  @media ${media.desktop} {
+    font-size: 24px;
+  }
+`;
+
+export const WeatherInfoSubTitle = styled.p`
+  font-size: 24px;
+  font-weight: 300;
+  text-shadow: 1px 0px 2px rgba(0, 0, 0, 0.6);
+
+  @media ${media.mobile} {
+    font-size: 12px;
+  }
+  @media ${media.tablet} {
+    font-size: 12px;
+  }
+  @media ${media.laptop} {
+    font-size: 12px;
+  }
+  @media ${media.desktop} {
+    font-size: 16px;
+  }
+`;
+
+export const WeatherCard = styled.div`
+  border-radius: 16px;
+  background: #cdcdcd;
+  padding: 22px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  margin-right: 24px;
+  margin-left: 24px;
+  margin-bottom: 36px;
+  user-select: none;
+`;
+
+export const WeatherCardText = styled.p`
+  font-size: 24px;
+  font-weight: 400;
+  margin-bottom: 6px;
+
+  @media ${media.mobile} {
+    font-size: 12px;
+  }
+  @media ${media.tablet} {
+    font-size: 12px;
+  }
+  @media ${media.laptop} {
+    font-size: 12px;
+  }
+  @media ${media.desktop} {
+    font-size: 16px;
+  }
+`;
+
+export const WeatherCardImg = styled.img`
+  width: 84px;
+  @media ${media.mobile} {
+    width: 64px;
+  }
+  @media ${media.tablet} {
+    width: 64px;
+  }
+  @media ${media.laptop} {
+    width: 64px;
+  }
+  @media ${media.desktop} {
+    width: 72px;
+  }
+`;
+
+export const ActiveSwiperPaginationBullet = styled.div`
+  background-color: #8cd2ce !important;
+`;
+
 /*Weather Components End */
 
 export const CityWeatherWrapper = styled.div`
