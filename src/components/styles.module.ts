@@ -1,7 +1,8 @@
 import styled from "styled-components";
 import { FaSearch } from "react-icons/fa";
 import { FaX } from "react-icons/fa6";
-import { Swiper } from "swiper/react";
+import { Swiper, SwiperSlide } from "swiper/react";
+
 const media = {
   mobile: `(max-width: 600px)`,
   tablet: `(min-width: 768px) and (max-width: 1024px)`,
@@ -989,5 +990,101 @@ export const RemoveButton = styled(FaX)`
   }
 `;
 /** CityCard.tsx **/
+
+/** CityWeather.tsx **/
+export const AddCityText = styled.span`
+  color: black;
+  font-weight: bold;
+`;
+
+export const CitySlider = styled(SwiperSlide)`
+  margin-top: 32px;
+  margin-bottom: 32px;
+`;
+
+export const StyledSwiper = styled.div`
+  .swiper-pagination-bullet-active {
+    background-color: #8cd2ce !important;
+  }
+`;
+/** CityWeather.tsx **/
+
+/** Modal.tsx **/
+export const AddCityInput = styled.input`
+  border: none;
+  border-radius: 12px;
+  height: 32px;
+  margin-bottom: 12px;
+  padding: 12px;
+  font-size: 32px;
+
+  @media ${media.mobile} {
+    padding: 6px;
+    font-size: 18px;
+  }
+  @media ${media.tablet} {
+    padding: 6px;
+    font-size: 18px;
+  }
+  @media ${media.laptop} {
+    padding: 6px;
+    font-size: 18px;
+  }
+`;
+
+export const ModalBackdrop = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+`;
+
+export const ModalContent = styled.div`
+  background: white;
+  padding: 20px;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: rgba(98, 96, 96, 0.47);
+  backdrop-filter: blur(6.9px);
+`;
+
+export const ModalButtonContainer = styled.div`
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+`;
+
+export const AddCityButton = styled.button`
+  background-color: #8cd2ce;
+  font-weight: 500;
+  color: white;
+  cursor: pointer;
+  border-radius: 64px;
+  border: none;
+  font-size: 24px;
+  padding: 6px 6px 2px 6px;
+`;
+
+export const CloseButton = styled.button`
+  background-color: rgb(184, 17, 17);
+  font-weight: 500;
+  color: white;
+  cursor: pointer;
+  border-radius: 64px;
+  border: none;
+  font-size: 24px;
+  padding: 6px 6px 2px 6px;
+`;
+/** Modal.tsx **/
 
 /* City Weather Component End */
