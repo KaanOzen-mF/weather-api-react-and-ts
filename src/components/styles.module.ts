@@ -10,6 +10,65 @@ const media = {
   desktop: `(min-width: 1200px) and (max-width: 2000px)`,
 };
 
+/*App.tsx Start*/
+export const MainPage = styled.div`
+  background: url("/public/daoudi-aissa-Pe1Ol9oLc4o-unsplash.jpg") no-repeat
+    center center fixed;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+`;
+
+export const WeatherMainPageContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  margin-top: 36px;
+  @media ${media.mobile} {
+    flex-direction: column;
+    width: 100%;
+  }
+  @media ${media.tablet} {
+    flex-direction: column;
+    width: 100%;
+  }
+`;
+
+export const WeatherMainPageLeftContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  @media ${media.mobile} {
+    width: 100%;
+  }
+  @media ${media.tablet} {
+    width: 100%;
+  }
+`;
+
+export const WeatherMainPageRightContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  @media ${media.mobile} {
+    width: 100%;
+    margin-top: 5%;
+  }
+  @media ${media.tablet} {
+    width: 100%;
+    margin-top: 5%;
+  }
+`;
+
+export const LoadingScreen = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+`;
+/*App.tsx End */
+
 /*Weather Navbar Components Start */
 export const NavbarWrapper = styled.div`
   display: flex;
