@@ -1,4 +1,23 @@
-# React + TypeScript + Vite
+# Weather App
+
+## Overview
+
+This project is a comprehensive weather application built with React, showcasing real-time weather data, forecasts, and city-specific weather conditions. It integrates styled components for a dynamic and responsive design, ensuring a seamless user experience across various devices.
+
+## Key Features
+
+- Real-Time Weather Data: Utilizes APIs to fetch current weather conditions, including temperature, humidity, and wind speed, for selected cities.
+- Forecast Weather: Provides a 3-day weather forecast, displaying maximum and minimum temperatures and weather icons for a quick overview.
+- City Weather Cards: Users can add and view weather cards for different cities, each card displaying key weather indicators and an option to remove the city from the view.
+- Responsive Swiper: Incorporates a swiper component for navigating through city weather cards, optimized for responsiveness with adjustable slides and spaces based on screen size.
+- Temperature Unit Toggle: Includes a context for toggling temperature units between Celsius and Fahrenheit, catering to user preferences.
+- Styling and Responsiveness: Employs styled components for styling, offering a clean and modern UI. Responsive design ensures compatibility with various screen sizes, from mobile devices to desktops.
+- Modal Component: Features a modal component for adding new cities, enhancing interactivity and user engagement.
+- This application is designed for weather enthusiasts who appreciate a detailed yet intuitive interface for monitoring weather conditions. Whether you're planning your day or checking the forecast for multiple cities, this app provides the necessary information at your fingertips.
+
+For developers, this project demonstrates the effective use of React hooks, context for state management, styled components for styling, and integration with third-party libraries like Swiper and Axios for fetching data and enhancing UI components.
+
+## Used Libraries
 
 ### Axios
 
@@ -6,42 +25,9 @@
 
 ### Styled Component
 
-### Openmeteo
-
 ### Recaharts
 
 ### Swiper
-
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: "latest",
-    sourceType: "module",
-    project: ["./tsconfig.json", "./tsconfig.node.json"],
-    tsconfigRootDir: __dirname,
-  },
-};
-```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
-
-Developing a Minimum Viable Product (MVP) for a weather app website involves identifying the core features that meet the primary needs of your target users, ensuring the app delivers value while remaining lean and manageable for initial launch. Here's a structured approach to defining the MVP features:
 
 # Figma Design File
 
