@@ -1,6 +1,13 @@
-import { FaX } from "react-icons/fa6";
 import { useTemperature } from "../TemperatureContext";
+import {
+  CityCardWrapper,
+  CityWeatherDegree,
+  CityWeatherIconImg,
+  CityWeatherName,
+  RemoveButton,
+} from "../styles.module";
 
+// Type definition for the city weather data
 type CityWeather = {
   name: string;
   forecast: {
@@ -18,12 +25,14 @@ type CityWeather = {
   };
 };
 
+// CityCard component displays weather information for a single city
 const CityCard: React.FC<{
-  cityWeather: CityWeather;
-  onRemove: () => void;
+  cityWeather: CityWeather; // Props for the city weather data
+  onRemove: () => void; // Callback function to trigger when the remove button is clicked
 }> = ({ cityWeather, onRemove }) => {
-  const { isCelsius } = useTemperature();
+  const { isCelsius } = useTemperature(); // Accessing the temperature unit from context
 
+  // Convert temperature to the selected unit (Celsius or Fahrenheit)
   const maxTemp = isCelsius
     ? cityWeather.forecast.forecastday[0].day.maxtemp_c
     : (cityWeather.forecast.forecastday[0].day.maxtemp_c * 9) / 5 + 32;
@@ -33,20 +42,20 @@ const CityCard: React.FC<{
     : (cityWeather.forecast.forecastday[0].day.mintemp_c * 9) / 5 + 32;
 
   return (
-    <div className="city-card">
-      <p className="cityWeatherName">{cityWeather.name}</p>
-      <p className="cityWeatherDegree">
+    <CityCardWrapper>
+      <CityWeatherName>{cityWeather.name}</CityWeatherName> {/* City name */}
+      <CityWeatherDegree>
         {maxTemp.toFixed()}°{isCelsius ? "C" : "F"} / {minTemp.toFixed()}°
-        {isCelsius ? "C" : "F"}
-      </p>
-      <img
+        {isCelsius ? "C" : "F"} {/* Displaying the temperature */}
+      </CityWeatherDegree>
+      <CityWeatherIconImg
         src={cityWeather.forecast.forecastday[0].day.condition.icon}
-        alt="Weather Icon"
-        className="cityWeatherIconImg"
+        alt="Weather Icon" // Weather condition icon
       />
-      <FaX onClick={onRemove} className="removeBtn" />
-    </div>
+      <RemoveButton onClick={onRemove} />{" "}
+      {/* Remove button to delete the city card */}
+    </CityCardWrapper>
   );
 };
 
-export default CityCard;
+export default CityCard; // Exporting the CityCard component for use in other parts of the application
