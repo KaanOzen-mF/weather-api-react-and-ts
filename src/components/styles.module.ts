@@ -617,6 +617,144 @@ export const WeatherHourlyCard = styled.div`
 `;
 /*Weather Components End */
 
+/*Forecast Weather Components Start */
+export const ForecastWeatherTempContainer = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
+export const ForecastContainer = styled.div`
+  margin-top: 1%;
+  margin-left: 6%;
+  margin-right: 6%;
+  margin-bottom: 3%;
+`;
+
+export const ForecastWeatherContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #fff;
+  border-radius: 12px;
+  background: #626060;
+  margin-bottom: 12px;
+  padding: 3px 6px;
+`;
+
+export const ForecastTitleContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 42px;
+  font-weight: 500;
+  margin-bottom: 12px;
+  color: white;
+  margin-top: 24px;
+  text-shadow: 1px 0px 2px rgba(0, 0, 0, 0.6);
+  @media ${media.mobile} {
+    font-size: 16px;
+  }
+  @media ${media.tablet} {
+    font-size: 16px;
+  }
+  @media ${media.laptop} {
+    font-size: 16px;
+  }
+  @media ${media.desktop} {
+    font-size: 32px;
+  }
+`;
+
+export const ForecastTitleDays = styled.p`
+  background-color: #8cd2ce;
+  border-radius: 30px;
+  padding: 12px;
+  font-size: 28px;
+  font-weight: 300;
+  box-shadow: 1px 0px 5px 0px rgba(0, 0, 0, 0.4);
+  @media ${media.mobile} {
+    font-size: 16px;
+  }
+  @media ${media.tablet} {
+    font-size: 12px;
+  }
+  @media ${media.laptop} {
+    font-size: 12px;
+  }
+  @media ${media.desktop} {
+    font-size: 16px;
+  }
+`;
+
+export const ForecastWeatherImg = styled.img`
+  width: 90px;
+  @media ${media.mobile} {
+    width: 64px;
+  }
+  @media ${media.tablet} {
+    width: 64px;
+  }
+  @media ${media.laptop} {
+    width: 64px;
+  }
+  @media ${media.desktop} {
+    width: 64px;
+  }
+`;
+
+export const ForecastWeatherMaxTemp = styled.p`
+  font-size: 36px;
+  font-weight: 500;
+  margin-right: 3px;
+  margin-left: 8px;
+  @media ${media.mobile} {
+    font-size: 16px;
+  }
+  @media ${media.tablet} {
+    font-size: 16px;
+  }
+  @media ${media.laptop} {
+    font-size: 16px;
+  }
+  @media ${media.desktop} {
+    font-size: 24px;
+  }
+`;
+
+export const ForecastWeatherMinTemp = styled.p`
+  font-size: 24px;
+  font-weight: 300;
+  @media ${media.mobile} {
+    font-size: 12px;
+  }
+  @media ${media.tablet} {
+    font-size: 12px;
+  }
+  @media ${media.laptop} {
+    font-size: 12px;
+  }
+  @media ${media.desktop} {
+    font-size: 16px;
+  }
+`;
+
+export const ForecastWeatherDate = styled.p`
+  font-size: 24px;
+  @media ${media.mobile} {
+    font-size: 12px;
+  }
+  @media ${media.tablet} {
+    font-size: 12px;
+  }
+  @media ${media.laptop} {
+    font-size: 12px;
+  }
+  @media ${media.desktop} {
+    font-size: 16px;
+  }
+`;
+/*Forecast Weather Components End */
+
 export const CityWeatherWrapper = styled.div`
   margin-right: 5%;
   margin-left: 5%;
