@@ -1,7 +1,11 @@
+// Importing necessary hooks and utilities from React, context, utilities, and styled components
 import { useState, useEffect } from "react";
-import { fetchForecastWeather } from "../../utils/fetchWeather";
+
 import { useTemperature } from "../TemperatureContext";
+
+import { fetchForecastWeather } from "../../utils/fetchWeather";
 import { convertTemperature } from "../../utils/convertTemperature";
+
 import {
   ForecastContainer,
   ForecastTitleContainer,
@@ -13,6 +17,7 @@ import {
   ForecastWeatherTempContainer,
 } from "../styles.module";
 
+// Interface for the structure of weather data received from the API
 interface WeatherDataProps {
   forecast: {
     forecastday: [
@@ -30,20 +35,27 @@ interface WeatherDataProps {
   };
 }
 
+// Props definition for the ForecastWeather component
 interface WeatherProps {
   selectedCity: string;
 }
 
+// The ForecastWeather component displays weather forecast data for a selected city
 export const ForecastWeather: React.FC<WeatherProps> = ({ selectedCity }) => {
+  // State to hold the fetched weather data
   const [weatherData, setWeatherData] = useState<WeatherDataProps | null>(null);
+  // Accessing the temperature unit (Celsius/Fahrenheit) from context
   const { isCelsius } = useTemperature();
 
+  // Fetching the forecast weather data on component mount or when selectedCity changes
   useEffect(() => {
+    // Fetch weather data for the selected city
     if (selectedCity) {
       fetchForecastWeather(selectedCity).then((currentWeather) => {
         setWeatherData(currentWeather);
       });
     } else {
+      // Use geolocation to fetch weather data if no city is selected
       navigator.geolocation.getCurrentPosition(
         (position) => {
           const { latitude, longitude } = position.coords;
@@ -63,6 +75,7 @@ export const ForecastWeather: React.FC<WeatherProps> = ({ selectedCity }) => {
     }
   }, [selectedCity]);
 
+  // Function to format date strings
   const formatDate = (dateString: string): string => {
     const options: Intl.DateTimeFormatOptions = {
       day: "2-digit",
@@ -73,6 +86,7 @@ export const ForecastWeather: React.FC<WeatherProps> = ({ selectedCity }) => {
   };
 
   return (
+    // Render the forecast weather data with styled components
     <ForecastContainer>
       <ForecastTitleContainer>
         <p>Forecast</p>
