@@ -52,7 +52,7 @@ const CityCard: React.FC<{
         src={cityWeather.forecast.forecastday[0].day.condition.icon}
         alt="Weather Icon" // Weather condition icon
       />
-      <RemoveButton onClick={onRemove} />{" "}
+      <RemoveButton onClick={onRemove} />
       {/* Remove button to delete the city card */}
     </CityCardWrapper>
   );
