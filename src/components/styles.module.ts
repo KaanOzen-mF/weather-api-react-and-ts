@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { FaSearch } from "react-icons/fa";
+import { Swiper } from "swiper/react";
 const media = {
   mobile: `(max-width: 600px)`,
   tablet: `(min-width: 768px) and (max-width: 1024px)`,
@@ -574,6 +575,46 @@ export const ActiveSwiperPaginationBullet = styled.div`
   background-color: #8cd2ce !important;
 `;
 
+export const WeatherHourlyCardContainer = styled(Swiper)`
+  width: 100%;
+  .swiper-pagination-bullet-active {
+    background-color: #8cd2ce !important;
+  }
+  @media ${media.tablet} {
+    width: 100%;
+    margin-top: 12px;
+    margin-left: 12px;
+  }
+  @media ${media.laptop} {
+    width: 100%;
+    margin-top: 12px;
+    margin-left: 12px;
+  }
+  @media ${media.desktop} {
+    width: 100%;
+    margin-top: 12px;
+    margin-left: 12px;
+  }
+`;
+
+export const WeatherHourlyCard = styled.div`
+  border-radius: 16px;
+  background: #cdcdcd;
+  padding: 22px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  margin-right: 24px;
+  margin-left: 24px;
+  margin-bottom: 36px;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+`;
 /*Weather Components End */
 
 export const CityWeatherWrapper = styled.div`
