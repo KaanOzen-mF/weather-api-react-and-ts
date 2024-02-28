@@ -2,6 +2,16 @@ import { useState, useEffect } from "react";
 import { fetchForecastWeather } from "../../utils/fetchWeather";
 import { useTemperature } from "../TemperatureContext";
 import { convertTemperature } from "../../utils/convertTemperature";
+import {
+  ForecastContainer,
+  ForecastTitleContainer,
+  ForecastTitleDays,
+  ForecastWeatherContainer,
+  ForecastWeatherImg,
+  ForecastWeatherMaxTemp,
+  ForecastWeatherMinTemp,
+  ForecastWeatherTempContainer,
+} from "../styles.module";
 
 interface WeatherDataProps {
   forecast: {
@@ -63,29 +73,25 @@ export const ForecastWeather: React.FC<WeatherProps> = ({ selectedCity }) => {
   };
 
   return (
-    <div className="forecastContainer">
-      <div className="forecastTitleContainer">
+    <ForecastContainer>
+      <ForecastTitleContainer>
         <p>Forecast</p>
-        <p className="forecastTitleDays">3 Days</p>
-      </div>
+        <ForecastTitleDays>3 Days</ForecastTitleDays>
+      </ForecastTitleContainer>
       {weatherData?.forecast.forecastday.map((i, k) => (
-        <div className="forecastWeatherContainer" key={k}>
-          <div className="forecastWeatherTempContainer">
-            <img
-              className="forecastWeatherImg"
-              src={i.day.condition.icon}
-              alt=""
-            />
-            <p className="forecastWeatherMaxTemp">
+        <ForecastWeatherContainer key={k}>
+          <ForecastWeatherTempContainer>
+            <ForecastWeatherImg src={i.day.condition.icon} alt="" />
+            <ForecastWeatherMaxTemp>
               {convertTemperature(i.day.maxtemp_c, isCelsius)}
-            </p>
-            <p className="forecastWeatherMinTemp">
+            </ForecastWeatherMaxTemp>
+            <ForecastWeatherMinTemp>
               /{convertTemperature(i.day.mintemp_c, isCelsius)}
-            </p>
-          </div>
+            </ForecastWeatherMinTemp>
+          </ForecastWeatherTempContainer>
           <p className="forecastWeatherDate">{formatDate(i.date)}</p>
-        </div>
+        </ForecastWeatherContainer>
       ))}
-    </div>
+    </ForecastContainer>
   );
 };
