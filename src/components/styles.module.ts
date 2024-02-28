@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { FaSearch } from "react-icons/fa";
 import { FaX } from "react-icons/fa6";
-import { Swiper, SwiperSlide } from "swiper/react";
+import { Swiper } from "swiper/react";
 
 const media = {
   mobile: `(max-width: 600px)`,
@@ -1051,19 +1051,26 @@ export const RemoveButton = styled(FaX)`
 /** CityCard.tsx **/
 
 /** CityWeather.tsx **/
-export const AddCityText = styled.span`
-  color: black;
-  font-weight: bold;
-`;
-
-export const CitySlider = styled(SwiperSlide)`
-  margin-top: 32px;
-  margin-bottom: 32px;
-`;
-
-export const StyledSwiper = styled.div`
+export const CitySwiper = styled(Swiper)`
   .swiper-pagination-bullet-active {
     background-color: #8cd2ce !important;
+  }
+`;
+
+export const CitySlider = styled.div`
+  margin-top: 32px;
+  margin-bottom: 32px;
+  @media ${media.mobile} {
+    margin-bottom: 12px;
+  }
+  @media ${media.tablet} {
+    margin-bottom: 12px;
+  }
+  @media ${media.laptop} {
+    margin-bottom: 12px;
+  }
+  @media ${media.desktop} {
+    margin-bottom: 16px;
   }
 `;
 /** CityWeather.tsx **/
