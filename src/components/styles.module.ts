@@ -421,7 +421,7 @@ export const ButtonContainer = styled.div`
     width: 35%;
   }
   @media ${media.desktop} {
-    width: 40%;
+    width: 35%;
   }
 `;
 
