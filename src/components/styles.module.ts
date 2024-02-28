@@ -618,6 +618,20 @@ export const WeatherHourlyCard = styled.div`
 /*Weather Components End */
 
 /*Forecast Weather Components Start */
+export const ForecastWeatherWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  border-radius: 12px;
+  border: 1px solid rgba(98, 96, 96, 0.1);
+  background: rgba(98, 96, 96, 0.47);
+  backdrop-filter: blur(6.900000095367432px);
+  margin-left: 5%;
+  margin-right: 5%;
+  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
+`;
+
 export const ForecastWeatherTempContainer = styled.div`
   display: flex;
   align-items: center;
@@ -755,21 +769,101 @@ export const ForecastWeatherDate = styled.p`
 `;
 /*Forecast Weather Components End */
 
+/* City Weather Components Start */
 export const CityWeatherWrapper = styled.div`
   margin-right: 5%;
   margin-left: 5%;
 `;
 
-export const ForecastWeatherWrapper = styled.div`
+/** AddCityCard.tsx **/
+export const AddCityCardWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  border: dashed 2px #fff;
+  border-radius: 24px;
+  text-align: center;
+  cursor: pointer;
+  background: rgba(98, 96, 96, 0.47);
+  backdrop-filter: blur(6.9px);
+  color: white;
+  font-size: 36px;
+  height: 240px;
+  width: 160px;
+  margin-left: 6px;
+  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
+  @media ${media.mobile} {
+    font-size: 16px;
+    height: 180px;
+    width: 138px;
+    margin-left: 0;
+    margin-right: 26px;
+  }
+  @media ${media.tablet} {
+    font-size: 16px;
+    height: 180px;
+    width: 138px;
+    margin-left: 0;
+    margin-right: 26px;
+  }
+  @media ${media.laptop} {
+    font-size: 16px;
+    height: 180px;
+    width: 138px;
+    margin-left: 0;
+    margin-right: 26px;
+  }
+  @media ${media.desktop} {
+    font-size: 24px;
+    height: 180px;
+    width: 138px;
+    margin-left: 0;
+    margin-right: 26px;
+  }
+`;
+
+export const PlusIcon = styled.span`
+  font-size: 36px;
+  color: yellow;
+  border: dashed 2px #fff;
+  border-radius: 640px;
+  padding: 4px 14px;
+  margin-bottom: 6px;
+  font-weight: 900;
+
+  &:hover {
+    background-color: #8cd2ce;
+  }
+  @media ${media.mobile} {
+    font-size: 16px;
+    border-radius: 64px;
+    padding: 4px 8px;
+  }
+  @media ${media.tablet} {
+    font-size: 16px;
+    border-radius: 64px;
+    padding: 4px 8px;
+  }
+  @media ${media.laptop} {
+    font-size: 16px;
+    border-radius: 64px;
+    padding: 4px 8px;
+  }
+  @media ${media.desktop} {
+    font-size: 24px;
+    border-radius: 64px;
+    padding: 4px 8px;
+  }
+`;
+
+export const AddCityContent = styled.div`
   display: flex;
   flex-direction: column;
-  border-radius: 12px;
-  border: 1px solid rgba(98, 96, 96, 0.1);
-  background: rgba(98, 96, 96, 0.47);
-  backdrop-filter: blur(6.900000095367432px);
-  margin-left: 5%;
-  margin-right: 5%;
-  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
-  -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
-  -moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
+  justify-content: center;
+  align-items: center;
 `;
+/** AddCityCard.tsx **/
+
+/** CityCard.tsx **/
+/** CityCard.tsx **/
+
+/* City Weather Component End */
