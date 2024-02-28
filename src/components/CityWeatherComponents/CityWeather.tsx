@@ -2,11 +2,12 @@ import React, { useState } from "react";
 import { fetchCurrentWeather } from "../../utils/fetchWeather";
 import "swiper/css";
 import "swiper/css/pagination";
-import { Swiper, SwiperSlide } from "swiper/react";
+import { SwiperSlide } from "swiper/react";
 import { Pagination } from "swiper/modules";
 import Modal from "../Modal";
 import CityCard from "./CityCard";
 import AddCityCard from "./AddCityCard";
+import { AddCityInput, CitySlider, CitySwiper } from "../styles.module";
 
 type CityWeather = {
   name: string;
@@ -66,7 +67,7 @@ const CityWeather: React.FC = () => {
         onAddCity={() => addCity(newCityName)}
       >
         <div>
-          <input
+          <AddCityInput
             type="text"
             value={newCityName}
             onChange={(e) => setNewCityName(e.target.value)}
@@ -76,58 +77,37 @@ const CityWeather: React.FC = () => {
           />
         </div>
       </Modal>
-      <Swiper
+      <CitySwiper
         grabCursor={true}
-        pagination={{
-          clickable: true,
-        }}
+        pagination={{ clickable: true }}
         modules={[Pagination]}
         breakpoints={{
-          300: {
-            slidesPerView: 2,
-            spaceBetween: 10,
-          },
-          400: {
-            slidesPerView: 2,
-            spaceBetween: 1,
-          },
-          500: {
-            slidesPerView: 2,
-            spaceBetween: 10,
-          },
-          600: {
-            slidesPerView: 3,
-            spaceBetween: 10,
-          },
-          768: {
-            slidesPerView: 4,
-            spaceBetween: 10,
-          },
-          1024: {
-            slidesPerView: 3,
-            spaceBetween: 10,
-          },
-          1200: {
-            slidesPerView: 4,
-          },
-          2000: {
-            slidesPerView: 5,
-          },
+          300: { slidesPerView: 2, spaceBetween: 10 },
+          400: { slidesPerView: 2, spaceBetween: 1 },
+          500: { slidesPerView: 2, spaceBetween: 10 },
+          600: { slidesPerView: 3, spaceBetween: 10 },
+          768: { slidesPerView: 4, spaceBetween: 10 },
+          1024: { slidesPerView: 3, spaceBetween: 10 },
+          1200: { slidesPerView: 4 },
+          2000: { slidesPerView: 5 },
         }}
-        className="citySwiper"
       >
-        <SwiperSlide className="citySlider">
-          <AddCityCard onAddClick={() => setIsAdding(true)} />
+        <SwiperSlide>
+          <CitySlider>
+            <AddCityCard onAddClick={() => setIsAdding(true)} />
+          </CitySlider>
         </SwiperSlide>
         {cities.map((cityWeather, index) => (
-          <SwiperSlide key={index} className="citySlider">
-            <CityCard
-              cityWeather={cityWeather}
-              onRemove={() => removeCity(cityWeather.name)}
-            />
+          <SwiperSlide key={index}>
+            <CitySlider>
+              <CityCard
+                cityWeather={cityWeather}
+                onRemove={() => removeCity(cityWeather.name)}
+              />
+            </CitySlider>
           </SwiperSlide>
         ))}
-      </Swiper>
+      </CitySwiper>
     </>
   );
 };
