@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { FaSearch } from "react-icons/fa";
+import { FaX } from "react-icons/fa6";
 import { Swiper } from "swiper/react";
 const media = {
   mobile: `(max-width: 600px)`,
@@ -864,6 +865,129 @@ export const AddCityContent = styled.div`
 /** AddCityCard.tsx **/
 
 /** CityCard.tsx **/
+export const CityCardWrapper = styled.div`
+  background: rgba(98, 96, 96, 0.47);
+  backdrop-filter: blur(6.9px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 24px;
+  color: white;
+  height: 220px;
+  align-self: flex-start;
+  width: 168px;
+  padding: 12px;
+  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
+
+  @media ${media.mobile} {
+    align-self: flex-start;
+    height: 160px;
+    width: 120px;
+    padding: 12px;
+  }
+  @media ${media.tablet} {
+    align-self: flex-start;
+    height: 160px;
+    width: 120px;
+    padding: 12px;
+  }
+  @media ${media.laptop} {
+    align-self: flex-start;
+    height: 160px;
+    width: 120px;
+    padding: 12px;
+  }
+  @media ${media.desktop} {
+    align-self: flex-start;
+    height: 160px;
+    width: 120px;
+    padding: 12px;
+    margin-bottom: 12px;
+  }
+`;
+
+export const CityWeatherName = styled.p`
+  font-size: 32px;
+
+  @media ${media.mobile} {
+    font-size: 16px;
+  }
+  @media ${media.tablet} {
+    font-size: 16px;
+  }
+  @media ${media.laptop} {
+    font-size: 16px;
+  }
+  @media ${media.desktop} {
+  }
+`;
+
+export const CityWeatherDegree = styled.p`
+  font-size: 24px;
+  font-weight: 100;
+  @media ${media.mobile} {
+    font-size: 12px;
+  }
+  @media ${media.tablet} {
+    font-size: 12px;
+  }
+  @media ${media.laptop} {
+    font-size: 12px;
+  }
+  @media ${media.desktop} {
+  }
+`;
+
+export const CityWeatherIconImg = styled.img`
+  width: 96px;
+  @media ${media.mobile} {
+    width: 64px;
+  }
+  @media ${media.tablet} {
+    width: 64px;
+  }
+  @media ${media.laptop} {
+    width: 64px;
+  }
+  @media ${media.desktop} {
+    width: 72px;
+  }
+`;
+
+export const RemoveButton = styled(FaX)`
+  cursor: pointer;
+  padding: 6px;
+  border-radius: 50%;
+  background-color: #8cd2ce;
+  margin-top: 12px;
+  transition: ease-out 0.3s;
+  width: 24px;
+  height: 24px;
+  background-color: #8cd2ce;
+
+  &:hover {
+    background-color: rgb(184, 17, 17);
+  }
+
+  @media ${media.mobile} {
+    margin-top: 6px;
+    width: 12px;
+    height: 12px;
+  }
+  @media ${media.tablet} {
+    margin-top: 6px;
+    width: 12px;
+    height: 12px;
+  }
+  @media ${media.laptop} {
+    margin-top: 6px;
+    width: 12px;
+    height: 12px;
+  }
+  @media ${media.desktop} {
+  }
+`;
 /** CityCard.tsx **/
 
 /* City Weather Component End */
