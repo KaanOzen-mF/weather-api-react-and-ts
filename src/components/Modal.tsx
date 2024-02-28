@@ -1,5 +1,12 @@
 import { FaPlus } from "react-icons/fa";
 import { FaX } from "react-icons/fa6";
+import {
+  AddCityButton,
+  CloseButton,
+  ModalBackdrop,
+  ModalButtonContainer,
+  ModalContent,
+} from "./styles.module";
 
 type ModalProps = {
   show: boolean;
@@ -19,21 +26,21 @@ const Modal: React.FC<ModalProps> = ({
   }
 
   return (
-    <div className="modalBackdrop">
-      <div className="modalContent">
+    <ModalBackdrop>
+      <ModalContent>
         {children}
-        <div className="modalButtonContainer">
+        <ModalButtonContainer>
           {onAddCity && (
-            <button className="modalAddCityBtn" onClick={onAddCity}>
+            <AddCityButton onClick={onAddCity}>
               <FaPlus />
-            </button>
+            </AddCityButton>
           )}
-          <button className="modalCloseBtn" onClick={onClose}>
+          <CloseButton onClick={onClose}>
             <FaX />
-          </button>
-        </div>
-      </div>
-    </div>
+          </CloseButton>
+        </ModalButtonContainer>
+      </ModalContent>
+    </ModalBackdrop>
   );
 };
 export default Modal;
