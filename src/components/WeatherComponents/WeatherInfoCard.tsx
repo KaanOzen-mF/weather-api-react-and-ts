@@ -1,12 +1,25 @@
 import { useState, useEffect } from "react";
-import { fetchCurrentWeather } from "../../utils/fetchWeather";
+
 import { useTemperature } from "../TemperatureContext";
-import "swiper/css";
-import "swiper/css/pagination";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Pagination } from "swiper/modules";
+
+import { fetchCurrentWeather } from "../../utils/fetchWeather";
 import { convertTemperature } from "../../utils/convertTemperature";
 
+// Importing Swiper styles for the carousel
+import "swiper/css";
+import "swiper/css/pagination";
+import { SwiperSlide } from "swiper/react";
+import { Pagination } from "swiper/modules";
+
+// Importing styled components for styling
+import {
+  WeatherCardImg,
+  WeatherCardText,
+  WeatherHourlyCard,
+  WeatherHourlyCardContainer,
+} from "../styles.module";
+
+// Interface for typing the weather data received from the API
 interface WeatherDataProps {
   location: {
     name: string;
@@ -34,21 +47,26 @@ interface WeatherDataProps {
   };
 }
 
+// Props interface for this component
 interface WeatherProps {
   selectedCity: string;
 }
 
+// WeatherInfoCard component displays hourly weather information for the selected city
 export const WeatherInfoCard: React.FC<WeatherProps> = ({ selectedCity }) => {
   const [weatherData, setWeatherData] = useState<WeatherDataProps | null>(null);
-
+  // Using the TemperatureContext to determine if the temperature should be displayed in Celsius or Fahrenheit
   const { isCelsius } = useTemperature();
 
+  // Fetch weather data on component mount or when the selected city changes
   useEffect(() => {
     if (selectedCity) {
+      // Fetch weather data for the selected city
       fetchCurrentWeather(selectedCity).then((currentWeather) => {
         setWeatherData(currentWeather);
       });
     } else {
+      // Use geolocation to fetch weather data for the current location if no city is selected
       navigator.geolocation.getCurrentPosition(
         (position) => {
           const { latitude, longitude } = position.coords;
@@ -69,15 +87,15 @@ export const WeatherInfoCard: React.FC<WeatherProps> = ({ selectedCity }) => {
   }, [selectedCity]);
 
   return (
-    <Swiper
-      slidesPerView={7}
-      spaceBetween={10}
-      grabCursor={true}
+    // Render the weather hourly card carousel
+    <WeatherHourlyCardContainer
+      grabCursor={true} // Enables grab cursor for the swiper
       pagination={{
-        dynamicBullets: true,
+        dynamicBullets: true, // Dynamic bullets for the swiper pagination
       }}
-      modules={[Pagination]}
+      modules={[Pagination]} // Including the Pagination module for swiper
       breakpoints={{
+        // Responsive breakpoints for the swiper
         300: {
           slidesPerView: 3,
           spaceBetween: 1,
@@ -109,21 +127,20 @@ export const WeatherInfoCard: React.FC<WeatherProps> = ({ selectedCity }) => {
           slidesPerView: 8,
         },
       }}
-      className="weatherHourlyCardContainer"
     >
       {weatherData?.forecast.forecastday[0].hour.map((i, k) => (
-        <SwiperSlide>
-          <div className="weatherHourlyCard" key={k}>
-            <p className="weatherCardText">
+        <SwiperSlide key={k}>
+          <WeatherHourlyCard>
+            <WeatherCardText>
               {i.time.split(" ")[1].split(":")[0]} am
-            </p>
-            <img src={i.condition.icon} alt="" className="weatherCardImg" />
-            <p className="weatherCardText">
+            </WeatherCardText>
+            <WeatherCardImg src={i.condition.icon} alt="" />
+            <WeatherCardText>
               {convertTemperature(i.temp_c, isCelsius)}
-            </p>
-          </div>
+            </WeatherCardText>
+          </WeatherHourlyCard>
         </SwiperSlide>
       ))}
-    </Swiper>
+    </WeatherHourlyCardContainer>
   );
 };
