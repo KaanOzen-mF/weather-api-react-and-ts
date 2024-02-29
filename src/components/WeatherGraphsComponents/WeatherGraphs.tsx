@@ -91,8 +91,20 @@ export const WeatherGraphs: React.FC<WeatherGraphsProps> = ({
                 reject(error);
               }
             },
-            (error) => {
-              reject(error);
+            async (error) => {
+              console.error(
+                "An error occurred while retrieving location information or user denied location access:",
+                error
+              );
+              // If geolocation fails or permission is denied, default to fetching weather data for Adana
+              try {
+                const defaultWeatherData = await fetchCurrentWeather(
+                  "37.0,35.3213"
+                ); // Adana's approximate coordinates
+                resolve(defaultWeatherData);
+              } catch (defaultError) {
+                reject(defaultError);
+              }
             }
           );
         });

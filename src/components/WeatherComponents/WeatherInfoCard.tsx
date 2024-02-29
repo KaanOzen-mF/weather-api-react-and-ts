@@ -81,6 +81,13 @@ export const WeatherInfoCard: React.FC<WeatherProps> = ({ selectedCity }) => {
             "An error occurred while retrieving location information:",
             error
           );
+          // If geolocation fails or permission is denied, fetch weather data for Adana as the default city
+          fetchCurrentWeather("37.0,35.3213").then(
+            // Adana's approximate coordinates
+            (currentWeather) => {
+              setWeatherData(currentWeather);
+            }
+          );
         }
       );
     }
