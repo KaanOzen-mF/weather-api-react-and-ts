@@ -1,8 +1,6 @@
-// Importing necessary hooks and utilities from React, context, utilities, and styled components
 import { useState, useEffect } from "react";
 
 import { useTemperature } from "../TemperatureContext";
-
 import { fetchForecastWeather } from "../../utils/fetchWeather";
 import { convertTemperature } from "../../utils/convertTemperature";
 
@@ -17,7 +15,6 @@ import {
   ForecastWeatherTempContainer,
 } from "../styles.module";
 
-// Interface for the structure of weather data received from the API
 interface WeatherDataProps {
   forecast: {
     forecastday: [
@@ -35,47 +32,46 @@ interface WeatherDataProps {
   };
 }
 
-// Props definition for the ForecastWeather component
-interface WeatherProps {
-  selectedCity: string;
+interface UserLocation {
+  lat: number | null;
+  lng: number | null;
 }
 
-// The ForecastWeather component displays weather forecast data for a selected city
-export const ForecastWeather: React.FC<WeatherProps> = ({ selectedCity }) => {
-  // State to hold the fetched weather data
+interface WeatherProps {
+  selectedCity: string;
+  userLocation: UserLocation;
+}
+
+export const ForecastWeather: React.FC<WeatherProps> = ({
+  selectedCity,
+  userLocation,
+}) => {
   const [weatherData, setWeatherData] = useState<WeatherDataProps | null>(null);
-  // Accessing the temperature unit (Celsius/Fahrenheit) from context
   const { isCelsius } = useTemperature();
 
-  // Fetching the forecast weather data on component mount or when selectedCity changes
+  console.log(userLocation);
   useEffect(() => {
-    // Fetch weather data for the selected city
-    if (selectedCity) {
-      fetchForecastWeather(selectedCity).then((currentWeather) => {
-        setWeatherData(currentWeather);
-      });
-    } else {
-      // Use geolocation to fetch weather data if no city is selected
-      navigator.geolocation.getCurrentPosition(
-        (position) => {
-          const { latitude, longitude } = position.coords;
-          fetchForecastWeather(`${latitude},${longitude}`).then(
-            (currentWeather) => {
-              setWeatherData(currentWeather);
-            }
-          );
-        },
-        (error) => {
-          console.error(
-            "An error occurred while retrieving location information:",
-            error
-          );
-        }
-      );
-    }
-  }, [selectedCity]);
+    const fetchWeather = () => {
+      let query = selectedCity;
 
-  // Function to format date strings
+      if (!query && userLocation.lat !== null && userLocation.lng !== null) {
+        query = `${userLocation.lat},${userLocation.lng}`;
+      }
+
+      if (query) {
+        fetchForecastWeather(query)
+          .then((currentWeather) => {
+            setWeatherData(currentWeather);
+          })
+          .catch((error) => {
+            console.error("Weather data fetching error:", error);
+          });
+      }
+    };
+
+    fetchWeather();
+  }, [selectedCity, userLocation]);
+
   const formatDate = (dateString: string): string => {
     const options: Intl.DateTimeFormatOptions = {
       day: "2-digit",
@@ -86,7 +82,6 @@ export const ForecastWeather: React.FC<WeatherProps> = ({ selectedCity }) => {
   };
 
   return (
-    // Render the forecast weather data with styled components
     <ForecastContainer>
       <ForecastTitleContainer>
         <p>Forecast</p>

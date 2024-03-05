@@ -2,15 +2,22 @@
 import { ForecastWeather } from "./ForecastWeather";
 import { ForecastWeatherWrapper } from "../styles.module";
 
+interface UserLocation {
+  lat: number | null;
+  lng: number | null;
+}
 // Interface for the props expected by the DisplayForecastWeather component
 interface DisplayForecastWeatherProps {
   selectedCity: string; //The city for which the forecast weather will be displayed
+  userLocation: UserLocation;
 }
 
 // The DisplayForecastWeather component is responsible for wrapping the ForecastWeather component
 // and passing the selectedCity prop to it.
+
 export default function DisplayForecastWeather({
   selectedCity,
+  userLocation,
 }: DisplayForecastWeatherProps) {
   return (
     // The ForecastWeatherWrapper styled component is used here to apply consistent styling
@@ -18,7 +25,10 @@ export default function DisplayForecastWeather({
     <ForecastWeatherWrapper>
       {/* The ForecastWeather component is passed the selectedCity prop to fetch and display
           the weather forecast for that specific city. */}
-      <ForecastWeather selectedCity={selectedCity} />
+      <ForecastWeather
+        selectedCity={selectedCity}
+        userLocation={userLocation}
+      />
     </ForecastWeatherWrapper>
   );
 }
