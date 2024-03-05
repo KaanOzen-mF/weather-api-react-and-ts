@@ -996,7 +996,7 @@ export const CityWeatherDegree = styled.p`
     font-size: 12px;
   }
   @media ${media.desktop} {
-    font-size: 12px;
+    font-size: 18px;
   }
 `;
 
