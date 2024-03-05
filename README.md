@@ -7,10 +7,14 @@ This project is a comprehensive weather application built with React, showcasing
 ## Key Features
 
 - Real-Time Weather Data: Utilizes APIs to fetch current weather conditions, including temperature, humidity, and wind speed, for selected cities.
+  ![alt text](image.png)
 - Forecast Weather: Provides a 3-day weather forecast, displaying maximum and minimum temperatures and weather icons for a quick overview.
+  ![alt text](image-1.png)
 - City Weather Cards: Users can add and view weather cards for different cities, each card displaying key weather indicators and an option to remove the city from the view.
+  ![alt text](image-2.png)
 - Responsive Swiper: Incorporates a swiper component for navigating through city weather cards, optimized for responsiveness with adjustable slides and spaces based on screen size.
 - Temperature Unit Toggle: Includes a context for toggling temperature units between Celsius and Fahrenheit, catering to user preferences.
+  ![alt text](image-3.png)
 - Styling and Responsiveness: Employs styled components for styling, offering a clean and modern UI. Responsive design ensures compatibility with various screen sizes, from mobile devices to desktops.
 - Modal Component: Features a modal component for adding new cities, enhancing interactivity and user engagement.
 - This application is designed for weather enthusiasts who appreciate a detailed yet intuitive interface for monitoring weather conditions. Whether you're planning your day or checking the forecast for multiple cities, this app provides the necessary information at your fingertips.
