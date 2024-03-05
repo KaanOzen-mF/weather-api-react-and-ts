@@ -996,6 +996,7 @@ export const CityWeatherDegree = styled.p`
     font-size: 12px;
   }
   @media ${media.desktop} {
+    font-size: 12px;
   }
 `;
 
@@ -1046,6 +1047,9 @@ export const RemoveButton = styled(FaX)`
     height: 12px;
   }
   @media ${media.desktop} {
+    margin-top: 6px;
+    width: 12px;
+    height: 12px;
   }
 `;
 /** CityCard.tsx **/
